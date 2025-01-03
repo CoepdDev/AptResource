@@ -1,0 +1,153 @@
+﻿@model AptEMS.Models.DailyAttendance
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+
+
+
+
+<br />
+<hr />
+
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Hike</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Empid, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DOJ, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DOJ, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DOJ, "", new { @class = "text-danger" })
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Logout, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Logout, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Logout, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <br />
+                    <input type="submit" value="Save" class="btn btn-default my-create-button" />
+
+
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</div>

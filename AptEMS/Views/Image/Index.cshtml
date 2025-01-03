@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+@model IEnumerable<AptEMS.Models.UploadedImages>
+
+<h2 class="text-center my-4">Uploaded Images</h2>
+
+<!-- Upload Form -->
+
+<form action="/Image/Upload" method="post" enctype="multipart/form-data" class="mb-5 d-flex align-items-center gap-3">
+    <input type="file" name="file" class="form-control file-input" />
+    <button type="submit" class="btn btn-success">Upload New</button>
+</form>
+
+
+<!-- Images Table -->
+<table class="table table-bordered table-striped table-hover text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>Image</th>
+            <th>File Name</th>
+            <th>Show on Home Page</th> <!-- New column -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@image.FilePath" alt="@image.FileName" width="100" class="rounded shadow" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => image.FileName)</td>
+                <td>
+                    <form action="/Image/ToggleActive" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@image.ID" />
+                        <input type="checkbox" name="isActive" onchange="this.form.submit()" @(image.IsActive ? "checked" : "") />
+                    </form>
+                </td>
+                <td>
+                    <!-- Reupload -->
+                    <form action="/Image/Reupload" method="post" enctype="multipart/form-data" class="d-inline">
+                        <input type="hidden" name="id" value="@image.ID" />
+                        <input type="file" name="file" class="form-control form-control-sm mb-2" />
+                        <button type="submit" class="btn btn-primary btn-sm">Reupload</button>
+                    </form>
+
+                    <!-- Delete -->
+                    <form action="/Image/Delete/@image.ID" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+<style>
+
+    /* Styling for buttons */
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    /* Table Styling */
+    .table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        margin-top: 20px;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .table-dark {
+        background-color: #343a40;
+        color: white;
+    }
+
+        .table-dark th {
+            border-color: #454d55;
+        }
+
+    /* Image Styling */
+    img.rounded {
+        border-radius: 10px;
+    }
+
+    img.shadow {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .file-input {
+        width: 250px; /* Adjust the width as needed */
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+</style>

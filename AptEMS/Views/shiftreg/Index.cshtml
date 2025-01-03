@@ -1,0 +1,122 @@
+﻿@model IEnumerable<AptEMS.Models.Shiftreg>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<h2 style="text-align:center">Attendence Shift Configuration </h2>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+
+
+        <p style="text-align:right;padding-right:70px">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+
+        <div class="table-responsive">
+            <!-- Makes the table responsive -->
+            <table id="datatable" class="table table-striped table-bordered">
+                <!-- Added Bootstrap classes -->
+                <thead>
+                    <tr>
+                        <th>
+                            Shift Type
+                            @*@Html.DisplayNameFor(model => model.s_type)*@
+                        </th>
+                        <th>
+                            Shift Start
+
+                            @*@Html.DisplayNameFor(model => model.s_start)*@
+                        </th>
+                        <th>
+                            Shift End
+
+
+                            @*@Html.DisplayNameFor(model => model.s_end)*@
+                        </th>
+                        <th>
+                            Break
+                            @*@Html.DisplayNameFor(model => model.brk)*@
+                        </th>
+                        <th>
+                            Attendence
+                            @*@Html.DisplayNameFor(model => model.attendence)*@
+                        </th>
+                        <th> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.s_type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.s_start)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.s_end)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.brk)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.attendence)
+                            </td>
+                            <td>
+
+                                @Html.ActionLink("Edit", "Edit", new { id = item.s_type }, new { @class = "btn btn-edit" }) |
+
+                                @*@Html.ActionLink("Details", "Details", new { id = item.s_type }, new { @class = "btn btn-edit" }) |*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.s_type }, new { @class = "btn btn-delete" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script> $(document).ready(function () {
+
+        $("#datatable").DataTable({
+            // Custom options for DataTable
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthMenu: [5, 10, 25, 50, 100],
+            pageLength: 10,
+            language: {
+                search: "Custom Search:",  // Customize search label
+                lengthMenu: "Display _MENU_ records per page",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "No entries to show",
+                zeroRecords: "No matching records found"
+            }
+        });
+
+    });
+
+</script>
+   
+    

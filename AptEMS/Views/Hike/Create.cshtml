@@ -1,0 +1,264 @@
+﻿@model AptEMS.Models.Hike
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Create</h2>
+
+<br />
+<hr />
+
+
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Hike</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Empid" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee ID<span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Designation" class="control-label col-md-2" style="white-space: nowrap;">
+                            Designation<span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Basesalary" class="control-label col-md-2" style="white-space: nowrap;">
+                            Base Salary<span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Basesalary, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Basesalary, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="Approver" class="control-label col-md-2" style="white-space: nowrap;">
+                            Approved By <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+
+
+                            @*@Html.DropDownListFor(model => model.Approver, new SelectList(ViewBag.Employee, "Text", "Text"), "--Select Approver  Type--", new { @class = "form-control" })*@
+                            @Html.DropDownListFor(model => model.Approver, ViewBag.Employee as SelectList,"--Select Approver  Type--",new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="Empname" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee Name <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Position" class="control-label col-md-2" style="white-space: nowrap;">
+                            Position<span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Hikee" class="control-label col-md-2" style="white-space: nowrap;">
+                            Hike Amount<span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Hikee, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Hikee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-4">
+
+
+
+
+                    <div class="form-group">
+                        <label for="Department" class="control-label col-md-2" style="white-space: nowrap;">
+                            Department<span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Dateofstart" class="control-label col-md-2" style="white-space: nowrap;">
+                            Date Of Start<span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Dateofstart, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Dateofstart, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="Reporter" class="control-label col-md-2" style="white-space: nowrap;">
+                            Reporting Manager <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+
+                            @Html.DropDownListFor(model => model.Reporter, new SelectList(ViewBag.Employee, "Text", "Text"), "--Select Reporter  Type--", new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <br />
+                    <input type="submit" value="Create" class="btn btn-default my-create-button" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    }
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+
+        <script>
+    $(document).ready(function () {
+        $("#Empid").on("change", function () {
+            var empid = $(this).val();
+            if (empid) {
+                $.ajax({
+                    url: '@Url.Action("GetDetailsByEmpid", "Hike")',
+                    type: "GET",
+                    data: { empid: empid },
+                    success: function (response) {
+                        if (response.success) {
+                            $("#Designation").val(response.employeeDetails.Designation);
+                            $("#FirstName").val(response.employeeDetails.FirstName);
+                        } else {
+                            alert(response.message);
+                            $("#Designation").val("");
+                            $("#FirstName").val("");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while fetching details.");
+                    }
+                });
+            } else {
+                $("#Designation").val("");
+                $("#FirstName").val("");
+            }
+        });
+    });
+        </script>
+
+
+
+
+
+    }
+
+</div>

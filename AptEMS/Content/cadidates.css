@@ -1,0 +1,46 @@
+﻿/* Styling for Candidate List Table */
+.table-responsive {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.candidate-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .candidate-table th, .candidate-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .candidate-table th {
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .candidate-table td {
+        background-color: #f9f9f9;
+    }
+
+    .candidate-table tr:nth-child(even) td {
+        background-color: #f1f1f1;
+    }
+
+    .candidate-table tr:hover td {
+        background-color: #e9ecef;
+    }
+
+    .candidate-table th, .candidate-table td {
+        border: 1px solid #dee2e6;
+        font-size: 14px;
+    }
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}

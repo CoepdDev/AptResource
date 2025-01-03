@@ -1,0 +1,151 @@
+﻿@model AptEMS.Models.AttendanceConfigure
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+
+
+<br />
+<hr />
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4> Attendance Configure</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+            <div class="row">
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="CreatedBy" class="control-label col-md-2" style="white-space: nowrap;">
+                            Created By<span style="color: red;">* </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MonthName" class="control-label col-md-2" style="white-space: nowrap;">
+                            Month Name<span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(
+                                model => model.MonthName,
+                                new SelectList(new List<string>
+                                {
+                                    "January", "February", "March", "April", "May", "June",
+                                    "July", "August", "September", "October", "November", "December"
+                                }),
+                                "---Select a Month---",
+                                new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MonthName, "", new { @class = "text-danger" })
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-5">
+
+                    <div class="form-group">
+                        <label for="WorkingDays" class="control-label col-md-2" style="white-space: nowrap;">
+                            Working Days<span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.WorkingDays, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.WorkingDays, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CreatedDate" class="control-label col-md-2" style="white-space: nowrap;">
+                            Created Date<span style="color: red;"> * </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <br />
+                    <input type="submit" value="Save" class="btn btn-default my-create-button" />
+
+
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

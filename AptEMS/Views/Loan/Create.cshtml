@@ -1,0 +1,189 @@
+﻿@model AptEMS.Models.Loan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Create</h2>
+<br />
+<hr />
+
+
+
+
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+    <h2>Create Loan</h2>
+    <br />
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+
+
+
+                        <label for="Empid" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee ID <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Empname" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee Name <span style="color: red;"> *</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LoanSanctionAmount" class="control-label col-md-2" style="white-space: nowrap;">
+                            Loan Sanction Amount <span style="color: red;">* </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoanSanctionAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanSanctionAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EMIAmount" class="control-label col-md-2" style="white-space: nowrap;">
+                            EMI Amount(in months) <span style="color: red;">* </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EMIAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EMIAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="LoanCreditedBy" class="control-label col-md-2" style="white-space: nowrap;">
+                            Loan Credited By <span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoanCreditedBy, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanCreditedBy, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="SalaryTransactionID" class="control-label col-md-2" style="white-space: nowrap;">
+                            Salary Transaction ID <span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SalaryTransactionID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SalaryTransactionID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ApprovalDate" class="control-label col-md-2" style="white-space: nowrap;">
+                            Approval Date <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ApprovalDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ApprovalDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label for="Tenure" class="control-label col-md-2" style="white-space: nowrap;">
+                            Tenure(in months) <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Tenure, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Tenure, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="LoanSourceBank" class="control-label col-md-2" style="white-space: nowrap;">
+                            LoanSourceBank <span style="color: red;"> </span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoanSourceBank, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanSourceBank, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Create" class="btn btn-default my-create-button" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+            </div>
+        </div>
+    }
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+$(document).ready(function () {
+    $("#Empid").on("change", function () {
+        var empid = $(this).val();
+        if (empid) {
+            $.ajax({
+                url: '@Url.Action("GetDetailsByEmpid", "Loan")',
+                type: "GET",
+                data: { empid: empid },
+                success: function (response) {
+                    if (response.success) {
+                 
+                        $("#FirstName").val(response.employeeDetails.FirstName);
+                    } else {
+                        alert(response.message);
+                
+                        $("#FirstName").val("");
+                    }
+                },
+                error: function () {
+                    alert("An error occurred while fetching details.");
+                }
+            });
+        } else {
+            $("#Designation").val("");
+            $("#FirstName").val("");
+        }
+    });
+});
+    </script>
+}

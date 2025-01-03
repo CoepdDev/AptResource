@@ -1,0 +1,68 @@
+﻿@model AptEMS.Models.Shiftreg
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+<h2>Details </h2>
+<hr />
+<div style="margin: 50px 200px 10px 50px; background-color: lightgray; border-radius: 10px; padding: 30px 10px 50px 60px">
+    <div>
+
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.s_type)
+                :
+
+                @Html.DisplayFor(model => model.s_type)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.s_type) :
+
+
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.s_start) :  @Html.DisplayFor(model => model.s_start)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.s_start)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.s_end) : @Html.DisplayFor(model => model.s_end)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.s_end)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.brk) :   @Html.DisplayFor(model => model.brk)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.brk)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.attendence) : @Html.DisplayFor(model => model.attendence)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.attendence)
+                </dd>*@
+
+        </dl>
+
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+    </p>
+ </div>

@@ -1,0 +1,113 @@
+﻿/* Form Container */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    margin: 20px auto; /* Centers horizontally */
+    display: flex;
+    flex-direction: column; /* Ensures form contents are stacked vertically */
+    align-items: center; /* Centers form content horizontally */
+    justify-content: center; /* Centers form vertically if parent has enough height */
+    min-height: 60vh; /* Centers the container vertically */
+}
+
+/* Form Heading */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Form Group */
+.form-group {
+    width: 100%; /* Ensures inputs take the full width of the container */
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+/* Input Fields */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+/* Validation Error Messages */
+.text-danger {
+    color: #d9534f;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Centered Action Link */
+.text-center {
+    color: #333;
+}
+
+.btn-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    .btn-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .btn-primary {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,273 @@
+﻿/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* General body styling */
+body {
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.about-section {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-image: url('images/hrconsultancy2.jpg');
+    height: 300px;
+    width: 97%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+    .overlay-content h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .overlay-content p {
+        font-size: 1.2rem;
+        margin: 0 auto;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        color: lightyellow;
+    }
+
+/* Mobile View */
+@media (max-width: 767px) {
+    .about-section {
+        height: 250px;
+    }
+
+    .overlay-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .overlay-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Team Section */
+.team-section {
+    background-color: #fff;
+    padding: 50px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .team-section h2 {
+        font-size: 2.5rem;
+        color: #ff9800;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+    }
+
+    .team-section .description {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .team-section .italic-text {
+        font-size: 1.2rem;
+        color: #007bff;
+        font-style: italic;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+.join-btn {
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #ff5722, #ff9800);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+    .join-btn:hover {
+        background: linear-gradient(90deg, #ff9800, #ff5722);
+        transform: scale(1.05);
+    }
+
+
+.container1 {
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.heading3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Spacing between columns */
+}
+
+.col {
+    flex: 1 1 calc(25% - 20px); /* Four columns per row with equal width */
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .col:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .col img {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+    }
+
+    .col .heading3 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #555;
+    }
+
+@media (max-width: 992px) {
+    .col {
+        flex: 1 1 calc(50% - 20px); /* Two columns per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .col {
+        flex: 1 1 100%; /* One column per row on small screens */
+    }
+}
+
+
+
+/* Subscription Section */
+.subscription-container {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 40px 0;
+}
+
+    .subscription-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .subscription-container p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .subscription-container form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    width: 250px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #0d6efd;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #ff5722;
+        color: #fff;
+    }
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    .team-section {
+        padding: 30px 15px;
+    }
+
+        .team-section h2 {
+            font-size: 2rem;
+        }
+
+        .team-section .description,
+        .team-section .italic-text {
+            font-size: 1rem;
+        }
+
+    .metrics-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .join-btn {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+
+    .subscription-container {
+        padding: 20px 10px;
+    }
+
+        .subscription-container form {
+            flex-direction: column;
+        }
+
+    input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

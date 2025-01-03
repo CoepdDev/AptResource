@@ -1,0 +1,61 @@
+﻿@model AptEMS.Models.PricingPackage
+@{
+    ViewBag.Title = "Create Pricing Package";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+
+
+<h2>Create Pricing Package</h2>
+
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PackageName)
+            @Html.TextBoxFor(model => model.PackageName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price)
+            @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BestFor)
+            @Html.TextBoxFor(model => model.BestFor, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive)
+            @Html.CheckBoxFor(model => model.IsActive)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillingCycle, "Billing Cycle")
+            @Html.DropDownListFor(model => model.BillingCycle, new SelectList(new[] { "Monthly", "Yearly" }), "Select Cycle", new { @class = "form-control" })
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Create</button>
+        <!-- Back to List button -->
+        @*<a href="@Url.Action("Index", "PricingPackage")" class="btn btn-secondary">Back to List</a>*@
+
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+    </div>
+    }
+    </div>

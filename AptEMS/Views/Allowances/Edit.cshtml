@@ -1,0 +1,145 @@
+﻿@model AptEMS.Models.Allowances
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<h2>Edit</h2>
+<hr />
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Allowances</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="Empid" class="control-label col-md-2">
+                    Empid <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Empname" class="control-label col-md-2">
+                    Empname <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Empname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Empname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Designation" class="control-label col-md-2">
+                    Designation <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AllowanceType" class="control-label col-md-2">
+                    AllowanceType <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AllowanceType, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AllowanceType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AllowanceAmount" class="control-label col-md-2">
+                    AllowanceAmount <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AllowanceAmount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AllowanceAmount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Frequency" class="control-label col-md-2">
+                    Frequency <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Frequency, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Frequency, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="EffectiveDate" class="control-label col-md-2">
+                    EffectiveDate <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EffectiveDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.EffectiveDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="EndDate" class="control-label col-md-2">
+                    EndDate <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Reason" class="control-label col-md-2">
+                    Reason <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Status" class="control-label col-md-2">
+                    Status <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default my-create-button" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>
+
+<style>
+    label {
+        display: inline; /* Ensure the label is inline */
+    }
+
+        label span.text-danger {
+            display: inline; /* Ensure the span with the asterisk is inline */
+            margin-left: 5px; /* Optional: adjust the spacing between the label and asterisk */
+        }
+</style>

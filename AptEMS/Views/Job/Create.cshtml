@@ -1,0 +1,326 @@
+﻿@model AptEMS.Models.JobApplicationForm
+
+@{
+    ViewBag.Title = "Create Candidate";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+<h2 class="form-title">Create Candidate</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-message" class="success-alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@using (Html.BeginForm("Create", "Job", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-container">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Full Name")
+            @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, "Email Address")
+            @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, "Mobile Number")
+            <input id="mobile" name="Mobile" type="tel" class="form-control" placeholder="Enter your mobile number" />
+            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FatherName, "Father's Name")
+            @Html.EditorFor(model => model.FatherName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FatherName, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label for="Gender">Gender<span style="color:red;">*</span></label>
+            @Html.DropDownListFor(model => model.Gender,
+                new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Male", Value = "Male" },
+                    new SelectListItem { Text = "Female", Value = "Female" },
+                    new SelectListItem { Text = "Others", Value = "Others" }
+                }, "Value", "Text"),
+                "Select Gender",
+                new { @class = "form-control", id = "gender", style = "min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dob, "Date of Birth")
+            @Html.TextBoxFor(model => model.Dob, new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "validation-error" })
+        </div>
+        <label for="Education">Education<span style="color:red;">*</span></label>
+        @Html.DropDownListFor(model => model.Education,
+            new SelectList(ViewBag.Qualification, "Value", "Text"),
+            "--Select Qualification Type--",
+            new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Specialization, "Specialization")
+            @Html.EditorFor(model => model.Specialization, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Specialization, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalExperience, "Total Experience")
+            @Html.EditorFor(model => model.TotalExperience, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TotalExperience, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RelevantExperience, "Relevant Experience")
+            @Html.EditorFor(model => model.RelevantExperience, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RelevantExperience, "", new { @class = "validation-error" })
+        </div>
+
+        <!-- Key Skills Field -->
+        <label for="key_skills">Key Skills<span style="color:red;">*</span></label>
+
+        @Html.DropDownListFor(model => model.KeySkills, new SelectList(ViewBag.Skill, "Value", "Text"), "--Select Skill--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.KeySkills, "", new { @class = "text-danger" })<br />
+
+        <!-- Strengths Field -->
+        <label for="strengths">Strengths<span style="color:red;">*</span></label>
+
+        @Html.DropDownListFor(model => model.Strengths, new SelectList(ViewBag.Strength, "Value", "Text"), "--Select Strength--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.Strengths, "", new { @class = "text-danger" })<br />
+
+        <!-- Present Designation Field -->
+        <label for="designation">Present Designation<span style="color:red;">*</span></label>
+
+
+        @Html.DropDownListFor(model => model.Designation, new SelectList(ViewBag.Designation, "Value", "Text"), "--Select Designation--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })<br />
+
+        <!-- Company Address Field -->
+        <label for="Current_Location">Current Location<span style="color:red;">*</span></label>
+        @Html.DropDownListFor(model => model.CurrentLocation, new SelectList(ViewBag.Location, "Value", "Text"), "--Select Current Location--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.CurrentLocation, "", new { @class = "text-danger" })<br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PresentCTC, "Present CTC")
+            @Html.EditorFor(model => model.PresentCTC, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PresentCTC, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExpectedCTC, "Expected CTC")
+            @Html.EditorFor(model => model.ExpectedCTC, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ExpectedCTC, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoticePeriod, "Notice Period")
+            @Html.DropDownListFor(model => model.NoticePeriod, new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Immediate", Value = "Immediate" },
+                new SelectListItem { Text = "< 15 Days", Value = "< 15 Days" },
+                new SelectListItem { Text = "1 Month", Value = "1 Month" },
+                new SelectListItem { Text = "3 Months", Value = "3 Months" },
+                new SelectListItem { Text = "> 3 Months", Value = "> 3 Months" }
+            }, "Value", "Text", Model?.NoticePeriod), "Select Notice Period", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label for="resume">Upload Resume <span style="color:red;">*</span></label>
+            <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx, .rtf" class="form-control" required />
+            <span id="resumeError" style="color: red; display: none;">Invalid file type or size. Only PDF, DOC, DOCX, RTF files are allowed, and the file size must be less than 5MB.</span>
+            @Html.ValidationMessageFor(model => model.ResumeFilePath, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-submit">
+            <button type="submit" class="btn-submit">Submit Application</button>
+        </div>
+    </div>
+}
+
+<!-- Include CDN for intl-tel-input -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/css/intlTelInput.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+    // Initialize intl-tel-input on the mobile number input
+    var input = document.querySelector("#mobile");
+    var iti = window.intlTelInput(input, {
+        separateDialCode: true, // Keep country code separate
+        initialCountry: "auto",  // Auto-detect user's country
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Required for validation
+    });
+
+    // Optional: Validate the mobile number when form is submitted
+    document.querySelector("form").addEventListener("submit", function (event) {
+        if (!iti.isValidNumber()) {
+            alert("Please enter a valid mobile number.");
+            event.preventDefault(); // Prevent form submission if the number is invalid
+        }
+    });
+</script>
+
+<script>
+    // JavaScript function to validate the file upload
+    function validateFileUpload(input) {
+        const file = input.files[0];
+        const fileSizeLimit = 5 * 1024 * 1024; // 5MB limit
+        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/rtf'];
+
+        // Check if file type is allowed
+        if (!allowedTypes.includes(file.type)) {
+            document.getElementById('resumeError').style.display = 'inline';
+            input.value = ''; // Clear the file input
+        }
+        // Check if file size is within the limit
+        else if (file.size > fileSizeLimit) {
+            document.getElementById('resumeError').style.display = 'inline';
+            input.value = ''; // Clear the file input
+        } else {
+            document.getElementById('resumeError').style.display = 'none';
+        }
+    }
+</script>
+
+
+
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+
+    h2.form-title {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .input-field {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+        .input-field:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    .validation-error {
+        font-size: 12px;
+        color: #e74c3c;
+        margin-top: 5px;
+    }
+
+    .form-submit {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-submit {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    }
+    .success-alert {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 18px;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+</style>
+
+<script>
+    // Display success message and redirect after a delay
+    window.onload = function () {
+        const successMessage = document.getElementById("success-message");
+        if (successMessage) {
+            // Display the success message
+            successMessage.style.display = "block";
+
+            // Hide the success message after 2 seconds
+            setTimeout(() => {
+                successMessage.style.display = "none";
+
+                // Redirect to the BuyNow page after an additional delay
+                setTimeout(() => {
+                    window.location.href = "/Job/ApplicationList";
+                }, 500);
+            }, 1000);
+        }
+    };
+</script>

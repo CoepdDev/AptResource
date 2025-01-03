@@ -1,0 +1,235 @@
+﻿/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* Global font and alignment settings */
+body, p, a, li, h3, .footer-section h3 {
+    font-weight: normal;
+    text-align: left;
+   
+}
+
+/* Container to center and align content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styling */
+header {
+    background-color: #2b3e50;
+    padding: 15px 20px;
+    position: relative;
+    z-index: 9999;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+    nav img {
+        height: 70px;
+    }
+
+.nav-links {
+    display: none; /* Hidden by default for mobile view */
+    gap: 15px;
+    margin-left: auto;
+}
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 8px 16px;
+        transition: color 0.3s;
+    }
+
+        .nav-links a:hover {
+            color: #39FF14; /* Bright green on hover */
+        }
+
+.toggler {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+
+        .nav-links a {
+            font-size: 22px;
+        }
+}
+
+@media (max-width: 767px) {
+    .toggler {
+        display: block;
+    }
+}
+
+/* Footer styling with font consistency */
+footer {
+    background-color: #003B4D;
+    color: white;
+    padding: 30px 20px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+    .footer-section h3 {
+        color: #39FF14;
+        font-size: 22px;
+        font-weight: normal; /* Prevents accidental bolding */
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+            .footer-section ul li a {
+                color: white;
+                font-size: 16px;
+                font-weight: normal; /* Ensures no bolding */
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .footer-section ul li a:hover {
+                    color: #39FF14;
+                }
+
+/* Prevents accidental bolding */
+footer .footer-bottom-links a,
+.footer-social-icons a {
+    font-weight: normal;
+}
+
+.footer-bottom-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+    .footer-bottom-links a:hover {
+        color: #39FF14;
+    }
+
+.footer-social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+    .footer-social-icons a:hover {
+        color: #39FF14;
+    }
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-section {
+        margin: 20px;
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-section h3 {
+        font-size: 6vw;
+    }
+
+    .footer-section ul li a {
+        font-size: 5vw;
+    }
+}
+
+/* Toggler button styling */
+.toggler {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Show the toggler button on smaller screens */
+@media (max-width: 767px) {
+    .toggler {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Hidden initially */
+        flex-direction: column;
+        background-color: #2b3e50;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+        .nav-links.show {
+            display: flex; /* Show when toggler is clicked */
+        }
+}
+
+/* Ensure images do not overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,204 @@
+﻿body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    width: 100%; /* Ensure the body takes full width */
+}
+
+/* Container Styles */
+.container-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto; /* Adjust height to content */
+    width: 100%;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.text-container-2 {
+    flex: 1;
+    padding: 20px;
+    text-align: justify;
+    margin: 0 20px 0 0;
+    font-family: "Trebuchet MS";
+}
+
+.main-heading {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.image-container-left {
+    flex: 1;
+    padding: 20px;
+    max-width: 50%;
+}
+
+    .image-container-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-height: 450px;
+        margin: 20px 0;
+    }
+
+/* Gradient Background */
+.gradient-background {
+    width: 100%;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #4cff00);
+    background-size: 200% 200%;
+    animation: gradient-animation 2s ease infinite;
+    border-radius: 10px;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Responsive Styles for Mobile */
+@media only screen and (max-width: 768px) {
+    .container-2 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-container-2, .image-container-left {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .image-container-left {
+        margin-bottom: 20px;
+    }
+
+    .main-heading {
+        font-size: 32px; /* Smaller font size for mobile */
+    }
+
+    .text-container-2 h3 {
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+/* Job Listings */
+.job-listings {
+    padding: 50px 20px;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+}
+
+.container1 {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+/* Job Items */
+.job-item {
+    background-color: #ffffff;
+    border: 1px solid #d1e7dd;
+    border-radius: 8px;
+    padding: 20px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+    .job-item:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-4px);
+    }
+
+.box1 {
+    padding: 10px;
+}
+
+.job-tag {
+    background-color: #198754;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.job-title {
+    font-size: 1.4em;
+    margin: 10px 0;
+    color: #343a40;
+}
+
+.job-item p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #495057;
+}
+
+.job-item strong {
+    color: #0d6efd;
+}
+
+.apply-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 500;
+}
+
+    .apply-btn:hover {
+        background-color: #0a58ca;
+        transform: translateY(-2px);
+    }
+
+/* Media Query for Smaller Screens */
+@media only screen and (max-width: 480px) {
+    .job-item {
+        flex: 1 1 100%;
+        max-width: 100%; /* Full width on very small screens */
+    }
+
+    .job-title {
+        font-size: 1.2em;
+    }
+
+    .apply-btn {
+        width: 100%; /* Full width for buttons */
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+}

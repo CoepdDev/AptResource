@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AptEMS.Models.Skill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Skill", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SkillID }, new { @class = "btn btn-warning btn-sm" }) |
+                @using (Html.BeginForm("Delete", "Skills", new { id = item.SkillID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+@*
+ Frontend code 
+<select id="skill-dropdown" class="form-control">
+    <option value="">Select Skill</option>
+</select>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.getJSON('@Url.Action("GetSkills", "Skill")', function (data) {
+            data.forEach(function (skill) {
+                $('#skill-dropdown').append(new Option(skill.SkillName, skill.SkillID));
+            });
+        });
+    });
+</script>
+public async Task<JsonResult>
+    GetSkills()
+    {
+    var skills = await db.Skills.Where(s => s.IsActive).ToListAsync();
+    return Json(skills, JsonRequestBehavior.AllowGet);
+    }
+*@

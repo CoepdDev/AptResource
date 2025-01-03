@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+@model IEnumerable<AptEMS.Models.JobPost>
+<html lang="en">
+<head>
+    @{
+        ViewBag.Title = "Find a Job";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <link href="~/Content/FindAJob.css" rel="stylesheet" />
+</head>
+<body>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert-box success-box" id="successMessageBox">
+            <span class="close-btn" onclick="document.getElementById('successMessageBox').style.display='none';">&times;</span>
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="gradient-background" style="margin: 30px 7px 2px 4px;">
+        <div class="container-2">
+            <div class="image-container-left">
+                <img src="~/Content/images/Careers Page Image.png" style="width: fit-content; margin-bottom: 3px; height: 450px;" />
+            </div>
+            <div class="text-container-2">
+                <h1 class="title-text main-heading">Job & Careers</h1>
+                <h3 style="font-weight: normal; font-size: 23px;">
+                    Have a question, suggestion, or just want to say hello?
+                    Join our dynamic team and embark on a rewarding
+                    journey with us. Explore exciting career opportunities
+                    across various disciplines, from technology and
+                    marketing to operations and beyond. We value
+                    passion, innovation, and collaboration. Check out
+                    our current openings and take the next step towards
+                    shaping the future with us.
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="color: orangered; text-align: center; font-weight: bold; font-family: Trebuchet MS; margin-top: 30px;">
+        Currently Available Positions at AptEMS Solutions
+    </h2>
+
+    @if (!Model.Any())
+    {
+        <p style="text-align: center; font-weight: bold; font-size: 25px; margin-top: 70px; color: crimson">No active job postings available at the moment.</p>
+    }
+    else
+    {
+        <div class="job-listings">
+            <div class="container1">
+                @foreach (var job in Model)
+                {
+                    <div class="job-item">
+                        <div class="box1">
+                            <div class="job-tag">@job.JobTitle</div><br />
+                            <p><strong>Job Type:</strong> @job.JobType</p>
+                            <p><strong>Employment Type:</strong> @job.EmploymentType</p>
+                            
+                            <p><strong>Experience:</strong> @job.MinExperience</p>
+                            <p><strong>Apply by:</strong> @job.ExpiryDate.ToString("MMMM dd, yyyy")</p>
+                                @*<h3 class="job-title">@job.ExpiryDate</h3>
+              <h3 class="job-title">@job.MaxExperience</h3>
+            <h3 class="job-title">@job.MinExperience</h3>*@
+
+
+                                <a href="@Url.Action("Application", "Job", new { jobId = job.JobPostID })" class="apply-btn">Apply Now</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+
+<style>
+    /* Success Message Box Styling */
+    .success-box {
+        position: relative;
+        color: #155724;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 8px;
+        font-size: 1.3em;
+        text-align: center;
+        width: 80%;
+        max-width: 900px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Close Button Styling */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #155724;
+        font-size: 24px; /* Larger close button */
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 20px;
+    }
+
+        .close-btn:hover {
+            color: #721c24; /* Change color on hover */
+        }
+</style>

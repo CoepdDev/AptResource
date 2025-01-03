@@ -1,0 +1,86 @@
+﻿@model AptEMS.ViewModels.CombinedJobApplicationViewModel
+@{
+    var matchedApplicants = ViewBag.MatchedApplicants as List<AptEMS.ViewModels.CombinedJobApplicationViewModel>;
+    var jobPost = ViewBag.JobPost as AptEMS.Models.JobPost;
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Matched Job Applicants for Job Post: @jobPost.JobTitle</h3>
+
+    <!-- Job Post Details Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h4>Job Post Details</h4>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Job Title:</strong> @jobPost.JobTitle</li>
+                        <li class="list-group-item"><strong>Required Skills:</strong> @jobPost.Skills</li>
+                        <li class="list-group-item"><strong>Experience:</strong> @jobPost.MinExperience</li>
+                        <li class="list-group-item"><strong>Education:</strong> @jobPost.Education</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Matched Applicants Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Matched Applicants</h4>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Key Skills</th>
+                        <th>Education</th>
+                        <th>Resume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (matchedApplicants.Any())
+                    {
+                        foreach (var applicant in matchedApplicants)
+                        {
+                            <tr>
+                                <td>@applicant.Name</td>
+                                <td>@applicant.Email</td>
+                                <td>@applicant.Mobile</td>
+                                <td>@applicant.KeySkills</td>
+                                <td>@applicant.Education</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(applicant.ResumeFilePath))
+                                    {
+                                        <a href="@Url.Content(applicant.ResumeFilePath)" target="_blank">View Resume</a>
+                                    }
+                                    else
+                                    {
+                                        <span>No Resume</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">No matched applicants available.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Optional: Additional JavaScript for enhanced functionality can be added here.
+</script>

@@ -1,0 +1,112 @@
+﻿@model IEnumerable<AptEMS.Models.ThirdRound>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Third Round</h2>
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+
+
+        <p style="text-align:right;padding-right:70px">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+
+        <div class="table-responsive">
+            <!-- Makes the table responsive -->
+            <table id="datatable" class="table table-striped table-bordered">
+                <!-- Added Bootstrap classes -->
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InterviewerName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Remark)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mobile)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InterviewerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Remark)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Mobile }, new { @class = "btn btn-edit btn-sm" }) |
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Mobile }, new { @class = "btn btn-danger btn-sm" }) |
+                                @Html.ActionLink("Next Round", "NextRound", new { id = item.Mobile }, new { @class = "btn btn-edit btn-sm" }) <!-- New button -->
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+ $(document).ready(function () {
+
+     $("#datatable").DataTable({
+         // Custom options for DataTable
+         paging: true,
+         searching: true,
+         ordering: true,
+         lengthMenu: [5, 10, 25, 50, 100],
+         pageLength: 10,
+         language: {
+             search: "Custom Search:",  // Customize search label
+             lengthMenu: "Display _MENU_ records per page",
+             info: "Showing _START_ to _END_ of _TOTAL_ entries",
+             infoEmpty: "No entries to show",
+             zeroRecords: "No matching records found"
+         }
+     });
+
+        });
+
+
+</script>

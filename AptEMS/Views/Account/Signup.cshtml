@@ -1,0 +1,364 @@
+﻿@model AptEMS.Models.SignupViewModel
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+
+
+    /* Base Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Background Styles */
+    .bg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+        background-image: url('../../content/images/pexels-dreamypixel-547115.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+        .bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(1px);
+            z-index: 1;
+        }
+
+    /* Welcome Text Styles */
+    .welcometext,
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+        .welcometext h1 {
+            font-size: 60px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: left;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcometext p {
+            font-size: 30px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+    .welcometext {
+        width: 100%;
+        max-width: 500px;
+        margin: 0px 50px 10px 100px;
+    }
+
+    /* Container Styles */
+    .container {
+        width: 90%;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #afd27da2;
+        border-radius: 10px;
+        box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Switch Text Styles */
+    .switch {
+        display: flex;
+        justify-content: space-between; /* Distribute items evenly */
+        align-items: center; /* Align items vertically */
+        color: #333333;
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 1px;
+    }
+
+    /* Centered Login */
+    .center-text {
+        flex: 1; /* Take full available space */
+        text-align: center;
+        padding-left: 80px;
+    }
+
+    /* Switch1 Styles for Sign Up */
+    .switch1 {
+        color: #333333;
+        font-size: 24px;
+        font-weight: 600;
+        margin-left: auto; /* Push to the right */
+    }
+
+    /* Register Link Styles */
+    .register-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 600;
+        padding-left: 5px;
+    }
+
+        .register-link:hover {
+            color: #0056b3;
+        }
+
+/*    h2 {
+        color: #333333;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }*/
+
+    /* Form Group Styles */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+    .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    /* Responsive Adjustments */
+
+    @@media (max-width: 576px) {
+        .container {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+
+    .password-container {
+        position: relative;
+    }
+
+        .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888; /* Default icon color */
+        }
+
+            .password-container .toggle-password:hover {
+                color: #007bff; /* Highlight color on hover */
+            }
+
+    .container2 {
+        margin: 50px 80px 10px 100px;
+    }
+
+        .container2 h1 {
+            color: dodgerblue;
+        }
+</style>
+<div class="bg">
+
+
+    <div class="welcometext">
+        <h1>Ready to own your hiring game</h1>
+        <p>We're revolutionising recruitment. Sign up now!</p>
+    </div>
+
+
+
+    <div class="container">
+
+        <div class="switch">
+            <div class="center-text">Sign Up</div>
+            <div class="switch1">
+
+                <a href="@Url.Action("Login", "Account")" class="register-link">Login</a>
+            </div>
+        </div>
+
+  
+
+
+        @using (Html.BeginForm("Signup", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="FullName" class="control-label">
+                    FullName <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Email" class="control-label">
+                    Email <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Password" class="control-label">
+                    Password <span class="text-danger">*</span>
+                </label>
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="ConfirmPassword" class="control-label">
+                    ConfirmPassword <span class="text-danger">*</span>
+                </label>
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="PhoneNumber" class="control-label">
+                    PhoneNumber <span class="text-danger">*</span>
+                </label>
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Signup</button>
+
+            <p class="text-center">
+                Already have an account?
+                @Html.ActionLink("Sign in", "Login", "Account", null, new { @class = "btn btn-link" })
+            </p>
+        }
+    </div>
+
+    <br />
+    <br />
+
+
+
+
+
+</div>
+
+
+
+
+<div class="container2">
+
+    <h1 style=" color: dodgerblue">  We build ‘Enterprise Solutions’ with fanatical attention to detail, and offer a range of development</h1>
+    <p>  We pride ourselves on using the modern ‘Agile-Scrum’ methodology and industry best practices to craft modern solutions to our clients ‘problem that are as elegant as they are enjoyable to use.We offer our potential team to work deliberately with each client in order to perform the enterprise analysis and understand the problem areas where the flaw exists.The Apt IT Soluiton is your number one source for all things kind of enterprise solutions. We’re dedicated to giving you the very best of quality products, with a focus on attending client’s suggestions and feedback in priority, world-class customer satisfaction and continuous support. The Apt IT Soluiton is founded in 2012 by Mr. Venkat R P, has come a long way from its inception and keep standing in this tough market only by clutching the root soil of building the best IT solution.</p>
+
+    <h1 style="text-decoration : underline; color:dodgerblue">
+        Vision
+
+    </h1>
+    <p> “We intend to provide our customers with the best Enterprise Solution experience from beginning to end , with the stylish UI, easy content search, easy-to-follow instructions, clear and smooth navigations, and plenty of Reports and MIS generation capabilities.” We are on the way to achieve the best industry standards available in the market and stand ourselves with dignity in the competitive world with our best services and products.</p>
+
+
+    <h1 style="text-decoration: underline; color: dodgerblue">
+        Mission
+
+    </h1>
+    <p> We, as Apt IT Soluiton, are bound to focus on innovations. Here we here in providing the simple solution but not the complex. We believe in deep collaboration and cross-pollination of our groups, which allow us to innovate in a way that others cannot. Our primary focus is set to satisfy the customer needs by providing the best and optimum solution in the given time line. We admit our commitment towards helping our client to come out from any technical latency and grow in all aspects with our IT solution. And frankly, we don't settle for anything less than excellence in every group in the company, and we have the self-honesty to admit when we're wrong and the courage to change.</p>
+</div>
+
+
+
+
+
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        this.classList.toggle('fa-eye-slash'); // Switch icon
+    });
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+

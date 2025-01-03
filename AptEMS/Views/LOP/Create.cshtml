@@ -1,0 +1,197 @@
+﻿@model AptEMS.Models.LOP
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<h2> LOP</h2>
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+    <h2>Create </h2>
+    <br />
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="Empid" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee ID <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Designation" class="control-label col-md-2" style="white-space: nowrap;">
+                            Designation <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LeaveType" class="control-label col-md-2" style="white-space: nowrap;">
+                            Leave Type <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.LeaveType,
+                                new SelectList(new[] {
+                                    new { Value = "Sick Leave", Text = "Sick Leave" },
+                                    new { Value = "Vacation Leave", Text = "Vacation Leave" },
+                                    new { Value = "Casual Leave", Text = "Casual Leave" },
+                                    new { Value = "Emergency Leave", Text = "Emergency Leave" }
+                                }, "Value", "Text"),
+                                "-- Select Leave Type --",
+                                new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LeaveType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="LeaveStart" class="control-label col-md-2" style="white-space: nowrap;">
+                            From <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LeaveStart, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LeaveStart, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="TotalLeaveDays" class="control-label col-md-2" style="white-space: nowrap;">
+                            Total Leave Days <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalLeaveDays, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalLeaveDays, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="Empname" class="control-label col-md-2" style="white-space: nowrap;">
+                            Employee Name <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Reason" class="control-label col-md-2" style="white-space: nowrap;">
+                            Reason <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LeaveStatus" class="control-label col-md-2" style="white-space: nowrap;">
+                            Leave Status <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LeaveStatus, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LeaveStatus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LeaveEnd" class="control-label col-md-2" style="white-space: nowrap;">
+                            To <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LeaveEnd, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LeaveEnd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="LeaveLeft" class="control-label col-md-2" style="white-space: nowrap;">
+                            Leave Left <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LeaveLeft, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LeaveLeft, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                </div>
+
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Create" class="btn btn-default my-create-button" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+            </div>
+
+        </div>
+    }
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+  $(document).ready(function () {
+      $("#Empid").on("change", function () {
+          var empid = $(this).val();
+          if (empid) {
+              $.ajax({
+                  url: '@Url.Action("GetDetailsByEmpid", "Hike")',
+                  type: "GET",
+                  data: { empid: empid },
+                  success: function (response) {
+                      if (response.success) {
+                          $("#Designation").val(response.employeeDetails.Designation);
+                          $("#FirstName").val(response.employeeDetails.FirstName);
+                      } else {
+                          alert(response.message);
+                          $("#Designation").val("");
+                          $("#FirstName").val("");
+                      }
+                  },
+                  error: function () {
+                      alert("An error occurred while fetching details.");
+                  }
+              });
+          } else {
+              $("#Designation").val("");
+              $("#FirstName").val("");
+          }
+      });
+  });
+    </script>
+}

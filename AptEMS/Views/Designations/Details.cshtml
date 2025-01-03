@@ -1,0 +1,35 @@
+﻿@model AptEMS.Models.Designation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Designation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

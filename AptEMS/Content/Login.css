@@ -1,0 +1,231 @@
+﻿/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Background Styles */
+.bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background-image: url('../../content/images/pexels-dreamypixel-547115.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    .bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        filter: blur(1px);
+        z-index: 1;
+    }
+
+/* Welcome Text Styles */
+.welcometext,
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+    .welcometext h1 {
+        font-size: 60px;
+        font-weight: 800;
+        color: #ffffff;
+        text-align: left;
+        margin-bottom: 10px;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcometext p {
+        font-size: 30px;
+        font-weight: 600;
+        color: #ffffff;
+        text-align: center;
+        margin: 10px 0;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+.welcometext {
+    width: 100%;
+    max-width: 500px;
+    margin: 0px 50px 10px 100px;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    margin-top:100px;
+    padding: 20px;
+    background-color: #afd27da2;
+    border-radius: 10px;
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-container {
+    margin-top: -127px; /* Adjust for the desired gap between the header and container */
+}
+
+/* Switch Text Styles */
+.switch {
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Align items vertically */
+    color: #333333;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Centered Login */
+.center-text {
+    flex: 1; /* Take full available space */
+    text-align: center;
+    padding-left: 80px;
+}
+
+/* Switch1 Styles for Sign Up */
+.switch1 {
+    color: #333333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: auto; /* Push to the right */
+}
+
+/* Register Link Styles */
+.register-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+    .register-link:hover {
+        color: #0056b3;
+    }
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #555555;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+
+.text-danger {
+    color: #e74c3c;
+    font-size: 12px;
+}
+
+/* Button Styles */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-primary:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+/* Password Toggle Styles */
+.password-container {
+    position: relative;
+}
+
+    .password-container .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #888;
+    }
+
+        .password-container .toggle-password:hover {
+            color: #007bff;
+        }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .welcometext h1 {
+        font-size: 40px;
+    }
+
+    .welcometext p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+
+    .welcometext h1 {
+        font-size: 30px;
+    }
+
+    .welcometext p {
+        font-size: 16px;
+    }
+}
+
+.container2 {
+    margin: 50px 80px 10px 100px;
+}
+
+    .container2 h1 {
+        color: dodgerblue;
+    }

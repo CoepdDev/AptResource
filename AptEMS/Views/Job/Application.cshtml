@@ -1,0 +1,247 @@
+﻿@model AptEMS.Models.JobApplicationViewModel
+
+@{
+    ViewBag.Title = "Job Description and Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Application.css" rel="stylesheet" />
+
+
+
+
+<div class="container">
+    <!-- Job Posting Details Section -->
+    <div class="job-details">
+        <h1>@Model.JobPost.JobTitle</h1>
+        <p>@Html.Raw(Model.JobPost.JobDescription.Replace("\n", "<br>"))</p>
+        <p><strong>JobType:</strong> @Model.JobPost.JobType</p>
+        <p><strong>Employment Type:</strong> @Model.JobPost.EmploymentType</p>
+        <p><strong>JobTitle:</strong> @Model.JobPost.JobTitle</p>
+        <p><strong>JobDescription:</strong> @Model.JobPost.JobDescription</p>
+        <p><strong>Skills:</strong> @Model.JobPost.Skills</p>
+        <p><strong>JobLocation:</strong> @Model.JobPost.JobLocation</p>
+        <p><strong>Industry:</strong> @Model.JobPost.Industry</p>
+        <p><strong>FunctionsAndRoles:</strong> @Model.JobPost.FunctionsAndRoles</p>
+        <p><strong>Education:</strong> @Model.JobPost.Education</p>
+        <p><strong>RecruiterName:</strong> @Model.JobPost.RecruiterName</p>
+        <p><strong>RecruiterDesignation:</strong> @Model.JobPost.RecruiterDesignation</p>
+        <p><strong>RecruiterPhoneNumber:</strong> @Model.JobPost.RecruiterPhoneNumber</p>
+        <p><strong>RecruiterEmail:</strong> @Model.JobPost.RecruiterEmail</p>
+        <p><strong>RecruiterCompanyName:</strong> @Model.JobPost.RecruiterCompanyName</p>
+        <p><strong>RecruiterAboutCompany:</strong> @Model.JobPost.RecruiterAboutCompany</p>
+    </div>
+
+    <!-- Job Application Form Section -->
+    <!-- Job Application Form Section -->
+    <div class="form-container">
+        <h2>Job Application Form</h2>
+
+        <form id="applicationForm" action="@Url.Action("Application", "Job", new { jobId = Model.JobPost.JobPostID })" method="post" enctype="multipart/form-data">
+            <!-- Hidden input for JobPosting JobID -->
+            <input type="hidden" name="JobPosting.JobID" value="@Model.JobPost.JobPostID" />
+
+            <!-- Name Field -->
+            <label for="name">Name <span style="color:red;">*</span></label>
+            <input type="text" id="name" name="JobApplication.Name" value="@Model.JobApplication.Name" maxlength="100" required />
+            @Html.ValidationMessageFor(m => m.JobApplication.Name, "", new { @class = "text-danger" })
+
+            <!-- Email Field -->
+            <label for="email">Email <span style="color:red;">*</span></label>
+            <input type="email" id="email" name="JobApplication.Email" value="@Model.JobApplication.Email" maxlength="100" required />
+            @Html.ValidationMessageFor(m => m.JobApplication.Email, "", new { @class = "text-danger" })
+
+            <!-- Mobile Field -->
+            <!--<label for="mobile">Mobile <span style="color:red;">*</span></label>
+            <input type="tel" id="mobile" name="JobApplication.Mobile" value="@Model.JobApplication.Mobile" pattern="^[6-9]\d{9}$" maxlength="10" required />
+
+            @Html.ValidationMessageFor(m => m.JobApplication.Mobile, "", new { @class = "text-danger" })-->
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.JobApplication.Mobile, "Mobile Number")<br>
+                <input id="mobile" name="JobApplication.Mobile" type="tel" class="form-control" placeholder="Enter your mobile number" />
+                @Html.ValidationMessageFor(m => m.JobApplication.Mobile, "", new { @class = "validation-error" })
+            </div>
+
+            <!-- Father's Name Field -->
+            <label for="father_name">Father's Name</label>
+            <input type="text" id="father_name" name="JobApplication.FatherName" value="@Model.JobApplication.FatherName" maxlength="100" />
+            @Html.ValidationMessageFor(m => m.JobApplication.FatherName, "", new { @class = "text-danger" })
+
+            <!-- Date of Birth Field -->
+            <label for="dob">Date of Birth <span style="color:red;">*</span></label>
+            <input type="date" id="dob" name="JobApplication.Dob" value="@Model.JobApplication.Dob?.ToString(" yyyy-MM-dd")" required />
+            @Html.ValidationMessageFor(m => m.JobApplication.Dob, "", new { @class = "text-danger" })
+
+
+            <label for="Education">Education<span style="color:red;">*</span></label>
+            @Html.DropDownListFor(m => m.JobApplication.Education,
+                new SelectList(ViewBag.Qualification, "Value", "Text"),
+                "--Select Qualification Type--",
+                new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(m => m.JobApplication.Education, "", new { @class = "text-danger" })
+
+
+
+
+            <div class="form-group">
+                <label for="specialization">Specialization<span style="color:red;">*</span></label>
+                @Html.TextBoxFor(m => m.JobApplication.Specialization, new { @class = "form-control", id = "specialization" })
+                @Html.ValidationMessageFor(m => m.JobApplication.Specialization, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group">
+                <label for="Gender">Gender<span style="color:red;">*</span></label>
+                @Html.DropDownListFor(m => m.JobApplication.Gender,
+                    new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Male", Value = "Male" },
+                        new SelectListItem { Text = "Female", Value = "Female" },
+                        new SelectListItem { Text = "Others", Value = "Others" }
+                    }, "Value", "Text", Model.JobApplication.Gender),
+                    "Select Gender",
+                    new { @class = "form-control", id = "gender", style = "min-height: 40px; line-height: 1.5;" })
+                @Html.ValidationMessageFor(m => m.JobApplication.Gender, "", new { @class = "text-danger" })
+            </div>
+
+
+
+            <!-- Total Experience Field -->
+            <label for="total_experience">Total Experience(In Years)<span style="color:red;">*</span></label>
+            <input type="number" id="total_experience" name="JobApplication.TotalExperience" value="@Model.JobApplication.TotalExperience" maxlength="50" />
+            @Html.ValidationMessageFor(m => m.JobApplication.TotalExperience, "", new { @class = "text-danger" })
+
+            <!-- Relevant Experience Field -->
+            <label for="relevant_experience">Relevant Experience(In Years)<span style="color:red;">*</span></label>
+            <input type="number" id="relevant_experience" name="JobApplication.RelevantExperience" value="@Model.JobApplication.RelevantExperience" maxlength="50" />
+            @Html.ValidationMessageFor(m => m.JobApplication.RelevantExperience, "", new { @class = "text-danger" })
+
+            <!-- Key Skills Field -->
+            <label for="key_skills">Key Skills<span style="color:red;">*</span></label>
+
+            @Html.DropDownListFor(m => m.JobApplication.KeySkills, new SelectList(ViewBag.Skill, "Value", "Text"), "--Select Skill--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(m => m.JobApplication.KeySkills, "", new { @class = "text-danger" })
+
+            <!-- Strengths Field -->
+            <label for="strengths">Strengths<span style="color:red;">*</span></label>
+
+            @Html.DropDownListFor(m => m.JobApplication.Strengths, new SelectList(ViewBag.Strength, "Value", "Text"), "--Select Strength--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(m => m.JobApplication.Strengths, "", new { @class = "text-danger" })
+
+            <!-- Present Designation Field -->
+            <label for="designation">Present Designation<span style="color:red;">*</span></label>
+
+
+            @Html.DropDownListFor(m => m.JobApplication.Designation, new SelectList(ViewBag.Designation, "Value", "Text"), "--Select Designation--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(m => m.JobApplication.Designation, "", new { @class = "text-danger" })
+
+            <!-- Company Address Field -->
+            <label for="Current_Location">Current Location<span style="color:red;">*</span></label>
+            @Html.DropDownListFor(m => m.JobApplication.CurrentLocation, new SelectList(ViewBag.Location, "Value", "Text"), "--Select Current Location--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+            @Html.ValidationMessageFor(m => m.JobApplication.CurrentLocation, "", new { @class = "text-danger" })
+
+            <!-- Present CTC Field -->
+            <label for="present_ctc">Present CTC(In INR) <span style="color:red;">*</span></label>
+            <input type="number" step="0.01" id="present_ctc" name="JobApplication.PresentCTC" value="@Model.JobApplication.PresentCTC" maxlength="50" />
+            @Html.ValidationMessageFor(m => m.JobApplication.PresentCTC, "", new { @class = "text-danger" })
+
+            <!-- Expected CTC Field -->
+            <label for="expected_ctc">Expected CTC(In INR)<span style="color:red;">*</span></label>
+            <input type="number" step="0.01" id="expected_ctc" name="JobApplication.ExpectedCTC" value="@Model.JobApplication.ExpectedCTC" maxlength="50" />
+            @Html.ValidationMessageFor(m => m.JobApplication.ExpectedCTC, "", new { @class = "text-danger" })
+
+            <label for="notice_period">Notice Period<span style="color:red;">*</span></label>
+            @Html.DropDownListFor(
+                m => m.JobApplication.NoticePeriod,
+                new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Immediate", Value = "Immediate" },
+                    new SelectListItem { Text = "< 15 Days", Value = "< 15 Days" },
+                    new SelectListItem { Text = "1 Month", Value = "1 Month" },
+                    new SelectListItem { Text = "2 Months", Value = "2 Months" },
+                    new SelectListItem { Text = "3 Months", Value = "3 Months" },
+                    new SelectListItem { Text = "> 3 Months", Value = "> 3 months" }
+                }, "Value", "Text", Model.JobApplication.NoticePeriod),
+                "Select Notice Period",
+                new { @class = "form-control", id = "notice_period", style = " min-height: 40px; line-height: 1.5;" }
+            )
+            @Html.ValidationMessageFor(m => m.JobApplication.NoticePeriod, "", new { @class = "text-danger" })
+
+            <!-- Resume Upload Field -->
+            <label for="resume">Upload Resume <span style="color:red;">*</span></label>
+            <input type="file"
+                   id="resume"
+                   name="resume"
+                   accept=".pdf, .doc, .docx, .rtf"
+                   required
+                   onchange="validateFileUpload(this)" />
+            <span id="resumeError" style="color: red; display: none;">Invalid file type or size. Only PDF, DOC, DOCX, RTF files are allowed, and the file size must be less than 5MB.</span>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+<script>
+    function validateFileUpload(input) {
+        const file = input.files[0];
+        const errorMessage = document.getElementById("resumeError");
+
+        // Allowed file types
+        const allowedExtensions = ['.pdf', '.doc', '.docx', '.rtf'];
+        const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+
+        if (file) {
+            const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+            const fileSize = file.size;
+
+            // Validate file type
+            if (!allowedExtensions.includes(fileExtension)) {
+                errorMessage.textContent = "Invalid file type. Only PDF, DOC, DOCX, RTF files are allowed.";
+                errorMessage.style.display = "block";
+                input.value = ""; // Clear the file input
+                return false;
+            }
+
+            // Validate file size
+            if (fileSize > maxSize) {
+                errorMessage.textContent = "The file size cannot exceed 5MB.";
+                errorMessage.style.display = "block";
+                input.value = ""; // Clear the file input
+                return false;
+            }
+
+            // If validation passes
+            errorMessage.style.display = "none";
+            return true;
+        }
+    }
+</script>
+
+ @*Include CDN for intl-tel-input *@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/css/intlTelInput.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+    // Initialize intl-tel-input on the mobile number input
+    var input = document.querySelector("#mobile");
+    var iti = window.intlTelInput(input, {
+        separateDialCode: true, // Keep country code separate
+        initialCountry: "auto",  // Auto-detect user's country
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Required for validation
+    });
+
+    // Optional: Validate the mobile number when form is submitted
+    document.querySelector("form").addEventListener("submit", function (event) {
+        if (!iti.isValidNumber()) {
+            alert("Please enter a valid mobile number.");
+            event.preventDefault(); // Prevent form submission if the number is invalid
+        }
+    });
+</script>

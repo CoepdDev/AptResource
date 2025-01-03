@@ -1,0 +1,195 @@
+﻿@model AptEMS.Models.JobPost
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmploymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmploymentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduledDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduledDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.JobDescription)  <!-- Updated to display JobDescription as raw HTML -->
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Industry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Industry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FunctionsAndRoles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FunctionsAndRoles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterDesignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterCompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterCompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecruiterAboutCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecruiterAboutCompany)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobPostID }, new { @class = "btn btn-sm btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-secondary" })
+</p>

@@ -1,0 +1,167 @@
+﻿@model IEnumerable<AptEMS.Models.DailyAttendance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2> Daily Attendance</h2>
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="overlay"></div> <!-- Background overlay for blur effect -->
+    <div class="alert alert-success custom-alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+        <p style="text-align:right">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+        <div class="table-responsive">
+            <!-- Makes the table responsive -->
+            <table ID="datatable" class="table table-striped table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DOJ)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Designation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Login)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Logout)
+                        </th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DOJ)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Login)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Logout)
+                            </td>
+
+                            <td>
+
+
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Empid }, new { @class = "btn btn-success btn-sm" })
+                                |
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */  id = item.Empid }) |*@
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */  id = item.Empid }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Check if success message exists
+        if ($(".custom-alert").length > 0) {
+            // Show the success message
+            $(".custom-alert").fadeIn();
+
+            // Show the overlay to blur the background
+            $(".overlay").fadeIn();
+
+            // Hide the message and overlay after 1 second
+            setTimeout(function () {
+                $(".custom-alert").fadeOut();
+                $(".overlay").fadeOut();
+            }, 1800); // 1000ms = 1 second
+        }
+
+        $("#datatable").DataTable({
+            // Custom options for DataTable
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthMenu: [5, 10, 25, 50, 100],
+            pageLength: 10,
+            language: {
+                search: "Custom Search:",  // Customize search label
+                lengthMenu: "Display _MENU_ records per page",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "No entries to show",
+                zeroRecords: "No matching records found"
+            }
+        });
+
+    });
+</script>
+<style>
+    /* Center the success message */
+    .custom-alert {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 250px; /* Adjusted width */
+        height: 250px; /* Adjusted height */
+        padding: 20px; /* Padding inside the box */
+        font-size: 18px; /* Increased font size */
+        text-align: center;
+        display: flex; /* Use flexbox to center the content */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        display: none; /* Initially hide the alert */
+        z-index: 9999; /* Ensure it's on top */
+        background-color: #28a745; /* Green background for success */
+        color: white; /* White text */
+        border-radius: 10px; /* Rounded corners */
+    }
+
+    /* Overlay to blur background */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        filter: blur(5px);
+        z-index: 9998; /* Just below the alert */
+        display: none; /* Initially hide the overlay */
+    }
+</style>

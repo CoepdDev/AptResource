@@ -1,0 +1,358 @@
+﻿@model AptEMS.Models.HomeViewModel
+@{
+    ViewBag.Title = "HR Consultancy Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <link href="~/Content/Index.css" rel="stylesheet" />
+    @*<img src="~/Content/images/home page.jpg" alt="home page" style="width:100%; height:600px;" />*@
+    <div class="uploaded-images">
+
+        @if (Model.UploadedImages != null && Model.UploadedImages.Any())
+        {
+            foreach (var image in Model.UploadedImages)
+            {
+                <div class="image-item">
+                    <img src="@Url.Content(image.FilePath)" alt="@image.FileName" style="width: 100%; height: 500px;" />
+                </div>
+            }
+        }
+
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</div>
+
+
+
+
+
+
+
+<div class="hero-section">
+    <div class="container text-center" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+        <h1>HR Consultancy Services in India</h1>
+        <p>
+            Looking for reliable HR consultancy services in India? InsourceIndia is your trusted partner,
+            providing comprehensive and tailored solutions to meet your human resource needs. With our
+            expert team and in-depth industry knowledge, we streamline your HR processes, recruit top talent,
+            and optimize workforce management. Experience seamless HR solutions with InsourceIndia, driving your
+            business towards success.
+        </p>
+        <a href="/Home/Contact" class="btn btn-primary">Request A Quote</a>
+    </div>
+</div>
+
+<div class="hr-consultancy-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Text Content Column -->
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h2>What is HR Consultancy?</h2>
+                <p>
+                    A Human Resources (HR) consultancy is a service that offers professional advice and support to businesses
+                    in managing their human resources functions. HR consultants provide expertise and guidance in various areas
+                    such as talent acquisition, performance management, employee engagement, compensation and benefits, compliance,
+                    and training and development.
+                    They work closely with the management team to understand the organization’s goals and align the HR strategy accordingly.
+                </p>
+            </div>
+            <!-- Image Column -->
+            <div class="col-md-6">
+                <img src="~/Content/images/about.jpg" alt="HR Consultancy Image" style="width:850px; height:300px;" class="img-fluid rounded" />
+            </div>
+
+            <!-- Heading -->
+            <h1 style="text-align: center; font-size: 30px; color: #7D4EA3; margin-top: 30px;">Why Choose Us</h1>
+
+            <!-- HR Services Section -->
+            <div class="hr-services" style="display: flex; justify-content: space-around; width: 100%; flex-wrap: wrap; margin-top: 20px;">
+
+                <!-- Service 1: Talent Acquisition -->
+                <div class="service-item">
+                    <i class="fas fa-users"></i>
+                    <p>Talent Acquisition</p>
+                </div>
+
+                <!-- Service 2: Employee Training & Development -->
+                <div class="service-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <p>Employee Training & Development</p>
+                </div>
+
+                <!-- Service 3: HR Advisory & Consulting -->
+                <div class="service-item">
+                    <i class="fas fa-handshake"></i>
+                    <p>HR Advisory & Consulting</p>
+                </div>
+
+                <!-- Service 4: Labor Law Compliance -->
+                <div class="service-item" style="text-align: center; width: 18%; padding: 20px;">
+                    <i class="fas fa-balance-scale"></i>
+                    <p>Labor Law Compliance</p>
+                </div>
+
+                <!-- Service 5: Performance Management -->
+                <div class="service-item">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Performance Management</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Client Reviews Section -->
+<div class="container2">
+    <h2>Client Reviews</h2>
+    <div class="stories">
+        @foreach (var review in Model.ClientReviews)
+        {
+            <div class="story-card">
+                <p>"@review.ReviewText"</p>
+                <p class="author">@review.Author</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<!-- Partnerships Section -->
+
+
+<div class="partnerships-carousel">
+    <h2 class="mb-3">OUR PARTNERSHIPS</h2>
+    <div class="partnerships-carousel-track">
+        @foreach (var partnership in Model.Partnerships)
+        {
+            <div class="partnership-item">
+                <img src="@Url.Content(partnership.ImagePath)" alt="@partnership.AltText" />
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Statistics Section -->
+<div style="margin: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+        @foreach (var stat in Model.Statistics)
+        {
+            <div class="statistic-item" style="text-align: center; width: 30%;">
+                @if (stat.IconType == "Placement")
+                {
+                    <img src="~/Content/images/career-goal.png" alt="Placement Icon" style="width: 50px; height: 50px;" />
+                }
+                else if (stat.IconType == "Clients")
+                {
+                    <img src="~/Content/images/satissfied clients.png" alt="Clients Icon" style="width: 50px; height: 50px;" />
+                }
+                else if (stat.IconType == "Consultants")
+                {
+                    <img src="~/Content/images/customer-service.png" alt="Consultants Icon" style="width: 50px; height: 50px;" />
+                }
+                <h6 class="stat-number" style="font-size: 24px; margin: 10px 0;">@stat.Count+</h6>
+                <h6 class="stat-description" style="font-size: 16px; color: #666;">@stat.Label</h6>
+            </div>
+        }
+    </div>
+</div>
+
+
+<style>
+    /* Partnership Section */
+    .partnerships-carousel {
+        overflow: hidden;
+        width: 100%;
+        margin-top: 50px;
+        position: relative;
+    }
+
+        .partnerships-carousel h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #0d6efd;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+    /* Marquee track */
+    .partnerships-carousel-track {
+        display: flex;
+        gap: 20px; /* Consistent gap between items */
+        animation: marquee-partnerships 10s linear infinite; /* Same speed as client reviews */
+    }
+
+    /* Marquee animation */
+    @@keyframes marquee-partnerships {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    /* Pause marquee on hover */
+    .partnerships-carousel:hover .partnerships-carousel-track {
+        animation-play-state: paused;
+    }
+
+    .partnership-item {
+        flex: 0 0 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 180px; /* Ensures consistent box size */
+    }
+
+    .partnership-item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+</style>
+
+
+
+
+<style>
+    /* Client Reviews Section */
+    .container2 {
+        padding: 30px 20px;
+        background-color: #f9f9f9;
+        margin-bottom: 50px;
+        position: relative;
+        overflow: hidden; /* Ensures content outside the container is hidden */
+    }
+
+        .container2 h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #0d6efd;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+    /* Marquee container */
+    .stories-wrapper {
+        position: relative;
+        overflow: hidden; /* Hides overflow for marquee effect */
+        height: 300px; /* Adjust height as per the card size */
+    }
+
+    .stories {
+        display: flex;
+        gap: 30px; /* Consistent gap between review cards */
+        animation: marquee 10s linear infinite;
+    }
+
+    /* Marquee animation */
+    @@keyframes marquee {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .stories:hover {
+        animation-play-state: paused; /* Pause animation on hover */
+    }
+
+    .story-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 250px;
+        min-width: 250px; /* Maintain minimum width */
+        text-align: center;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+        .story-card:hover {
+            transform: scale(1.05);
+        }
+
+        .story-card p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+    .author {
+        font-weight: bold;
+        color: #0d6efd;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /*statatics*/
+    .statistic-item {
+        text-align: center;
+        margin: 10px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+        .statistic-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .stat-description {
+        font-size: 16px;
+        color: #666;
+    }
+</style>
+
+
+@*<div style="margin: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+            @foreach (var stat in Model)
+            {
+                <div class="statistic-item" style="text-align: center; width: 30%;">
+                    @if (stat.IconType == "Placement")
+                    {
+                        <img src="~/Content/images/career-goal.png" alt="Placement Icon" style="width: 50px; height: 50px;" />
+                    }
+                    else if (stat.IconType == "Clients")
+                    {
+                        <img src="~/Content/images/satissfied clients.png" alt="Clients Icon" style="width: 50px; height: 50px;" />
+                    }
+                    else if (stat.IconType == "Consultants")
+                    {
+                        <img src="~/Content/images/customer-service.png" alt="Consultants Icon" style="width: 50px; height: 50px;" />
+                    }
+                    <h6 class="stat-number" style="font-size: 24px; margin: 10px 0;">@stat.Count+</h6>
+                    <h6 class="stat-description" style="font-size: 16px; color: #666;">@stat.Label</h6>
+                </div>
+            }
+        </div>
+    </div>*@

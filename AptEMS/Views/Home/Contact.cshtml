@@ -1,0 +1,212 @@
+﻿@model AptEMS.Models.ContactFormModel
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .contact-card {
+        padding: 20px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        margin-top: 20px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+    .contact-icon {
+        font-size: 4rem;
+        margin-bottom: 15px;
+    }
+
+    .chat-icon {
+        color: #6436d6;
+    }
+
+    .email-icon {
+        color: #df3333;
+    }
+
+    .phone-icon {
+        color: #8cc63f;
+    }
+
+    .btn-custom {
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+
+    .chat-btn {
+        background-color: #6436d6;
+    }
+
+    .email-btn {
+        background-color: #df3333;
+    }
+
+    .phone-btn {
+        background-color: #8cc63f;
+    }
+
+    .contact-form-container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container {
+        margin-top: 40px;
+    }
+</style>
+
+<div class="container">
+    <div class="row text-center">
+        <!-- Chat Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card contact-card shadow-lg">
+                <i class="fas fa-comment chat-icon contact-icon"></i>
+                <h4>Chat With Us</h4>
+                <p>Our live experts are available from Wednesday to Monday, 10:00 AM - 6:00 PM.</p>
+                <a href="https://web.whatsapp.com/send?phone=919154077390&submit=Continue" target="_blank" class="btn btn-custom chat-btn">Chat With Us</a>
+            </div>
+        </div>
+
+        <!-- Email Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card contact-card shadow-lg">
+                <i class="fas fa-envelope email-icon contact-icon"></i>
+                <h4>Email Address</h4>
+                <p style="text-align:center">info@aptits.com</p>
+                <a href="mailto:info@aptits.com" class="btn btn-custom email-btn">Email Us</a>
+            </div>
+        </div>
+
+        <!-- Phone Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card contact-card shadow-lg">
+                <i class="fas fa-phone phone-icon contact-icon"></i>
+                <h4>Give Us a Call</h4>
+                <p>Our experts are standing by from Wednesday to Monday, 10:00 AM - 6:00 PM.</p>
+                <a href="tel:+91-7416664425" class="btn btn-custom phone-btn">+91-7416664425</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left Side: Image -->
+        <div class="col-md-6">
+            <img src="~/Content/images/Call-Us.jpg" class="img-fluid" alt="Contact Us" />
+        </div>
+        <!-- Right Side: Contact Form -->
+        <div class="col-md-6">
+            <div class="contact-form-container">
+                <h2>Don't Hesitate To <span style="color: orange;">Message Us</span></h2>
+                <p>We would love to hear your thoughts and answer any questions you may have!</p>
+
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FullName, "Full Name")<span style="color:red;">*</span>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CompanyName, "Company Name")<span style="color:red;">*</span>
+                        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmailAddress, "Email")<span style="color:red;">*</span>
+                        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, "Mobile" )<span style="color:red;">*</span>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", type = "tel", @pattern = "[5-9][0-9]{9}", @title = "Phone number must be 10 digits and start with 5-9." })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Designation)
+                        @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Designation, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HiringInterest, "Hiring Interest")
+                        @Html.TextBoxFor(m => m.HiringInterest, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.HiringInterest, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Requirement, "Requirement")
+                        @Html.TextAreaFor(m => m.Requirement, new { @class = "form-control", rows = "4" })
+                        @Html.ValidationMessageFor(m => m.Requirement, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Submit</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="modal fade" tabindex="-1" role="dialog" id="successModal" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="text-success">@TempData["Message"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="map-container">
+    <h4>Our Location</h4>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.681166126046!2d78.4477782!3d17.4413663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910f1a811837%3A0xdcf3d92753423421!2sAPT%20IT%20Solutions!5e0!3m2!1sen!2sin!4v1696073467995!5m2!1sen!2sin"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        // Show the modal if TempData message is present
+        @if (TempData["Message"] != null)
+        {
+            <text>
+                $('#successModal').modal('show');
+
+                // Automatically close the modal after 5 seconds
+                setTimeout(function () {
+                    $('#successModal').modal('hide');
+                }, 5000);
+            </text>
+        }
+    });
+</script>

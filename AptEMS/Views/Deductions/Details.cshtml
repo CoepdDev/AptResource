@@ -1,0 +1,91 @@
+﻿@model AptEMS.Models.Deduction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Deduction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeductionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeductionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EffectiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EffectiveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeductionAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeductionAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeductionFrequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeductionFrequency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

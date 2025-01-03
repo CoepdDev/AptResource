@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AptEMS.Models.Strength>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StrengthName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrengthName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StrengthID }, new { @class = "btn btn-warning btn-sm" }) |
+                @using (Html.BeginForm("Delete", "Strengths", new { id = item.StrengthID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+ @*Frontend code
+<select id="strengthDropdown" class="form-control"></select>
+
+<script>
+    $.getjson('/strength/getactivestrengths', function (data) {
+        $('#strengthdropdown').empty();
+        $.each(data, function (index, item) {
+            $('#strengthdropdown').append($('<option>', {
+                value: item.strengthid,
+                text: item.strengthname
+            }));
+        });
+    });
+</script>
+
+
+public async task<jsonresult>
+    getactivestrengths()
+    {
+    var strengths = await db.strengths
+    .where(s => s.isactive)
+    .select(s => new { s.strengthid, s.strengthname })
+    .tolistasync();
+
+    return json(strengths, jsonrequestbehavior.allowget);
+    }*@
