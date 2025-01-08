@@ -77,10 +77,7 @@ namespace AptEMS.Models
             // Map JobApplicationForm to the correct table name (singular)
             modelBuilder.Entity<JobApplicationForm>().ToTable("JobApplicationForm");
 
-            modelBuilder.Entity<Payment>()
-                .Property(p => p.AmountPaid)
-                .HasColumnType("decimal")
-                .HasPrecision(18, 2);
+            
 
             base.OnModelCreating(modelBuilder);
         }
