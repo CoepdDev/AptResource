@@ -1,4 +1,4 @@
-﻿
+﻿@model AptEMS.Models.HomeViewModel
 @{
     ViewBag.Title = "HR Consultancy Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -188,6 +188,7 @@
         0% {
             transform: translateX(100%);
         }
+
         100% {
             transform: translateX(-100%);
         }
@@ -206,12 +207,12 @@
         min-width: 180px; /* Ensures consistent box size */
     }
 
-    .partnership-item img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        border-radius: 10px;
-    }
+        .partnership-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
 </style>
 
 
