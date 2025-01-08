@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AptEMS.Models.Statistic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialno = 1;
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action( "Create","Statistic")" class="btn btn-primary">Create Statistic</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                S.No
+            </th>
+            <th>Icon Type</th>
+            <th>Count</th>
+            <th>Label</th>
+            <th>IsActive</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@serialno</td>
+                <td>@Html.DisplayFor(modelItem => item.IconType)</td>
+                <td>@Html.DisplayFor(modelItem => item.Count)</td>
+                <td>@Html.DisplayFor(modelItem => item.Label)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                <td>
+                    <!-- Align buttons horizontally using a flex container -->
+                    <div style="display: flex; gap: 10px; justify-content: flex-start;">
+                        <!-- Edit Button -->
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+
+                        <!-- Delete Button -->
+                        @using (Html.BeginForm("DeleteConfirmed", "Statistic", FormMethod.Post, new { @id = "form-delete-" + item.Id }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("Id", item.Id)
+
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">
+                                Delete
+                            </button>
+                        }
+                    </div>
+                </td>
+
+            </tr>
+            serialno++;
+        }
+    </tbody>
+</table>

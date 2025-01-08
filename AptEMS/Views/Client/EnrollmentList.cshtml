@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AptEMS.Models.Enrollment>
+
+@{
+    ViewBag.Title = "Enrollment List";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialno = 1;
+}
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+        <div class="table-responsive">
+            <div class="d-flex justify-content-between mb-3">
+                <form method="get" action="@Url.Action("EnrollmentList", "Client")" class="form-inline">
+                    <div class="form-group mr-2">
+                        @Html.DropDownList("selectedEmployeeName",
+                            (SelectList)ViewBag.EmployeeList,
+                            "Select Employee",
+                            new { @class = "form-control", onchange = "this.form.submit();" })
+                    </div>
+                </form>
+            </div>
+
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>SNO</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Remarks</th>
+                        <th>Action</th>
+                        <th>Assign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var enrollment in Model)
+                    {
+                        <tr>
+                            <td>@serialno</td>
+                            <td>@enrollment.FirstName</td>
+                            <td>@enrollment.LastName</td>
+                            <td>@enrollment.Email</td>
+                            <td>@enrollment.Mobile</td>
+                            <td>@enrollment.Company</td>
+                            <td>@enrollment.Location</td>
+                            <td>@enrollment.Remarks</td>
+
+                            <td>
+                                @Html.DropDownList(
+                                    "selectedEmployeeName_" + @enrollment.Id,
+                                    (SelectList)ViewBag.EmployeeList,
+                                    "Select Employee",
+                                    new { @class = "form-control", @id = "employeeSelect_" + @enrollment.Id })
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("AssignEmployee", "Client", FormMethod.Post))
+                                {
+                                    @Html.Hidden("id", enrollment.Id) <!-- Enrollment ID -->
+                                    @Html.Hidden("selectedEmployeeName", null, new { id = "hiddenEmployee_" + @enrollment.Id })
+
+                                    <button type="button" class="btn btn-success" onclick="assignEmployee(@enrollment.Id)">Assign</button>
+                                }
+                            </td>
+                        </tr>
+                        serialno++;
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function assignEmployee(id) {
+        var selectedEmployee = $('#employeeSelect_' + id).val();
+        $('#hiddenEmployee_' + id).val(selectedEmployee);
+
+        if (!selectedEmployee || selectedEmployee === "Select Employee") {
+            alert("Please select an employee.");
+            return;
+        }
+
+        $('form[action="/Client/AssignEmployee"]')
+            .has('#hiddenEmployee_' + id) // Ensure this form matches the current row
+            .submit();
+    }
+</script>

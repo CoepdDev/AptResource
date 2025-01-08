@@ -1,0 +1,142 @@
+﻿@model IEnumerable<AptEMS.Models.SalaryComparison>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<h2> Salary Comparison</h2>
+
+
+@*<div class="row" style="padding:40px">
+
+        <div class="col-md-6">
+
+            <form class="d-flex" asp-action="Index" asp-controller="Roles">
+                <input name="searchstring" class="form-control me-1 " type="search" placeholder="Search">
+                <button class="btn btn-dark" type="submit"> search </button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <a asp-action="Index" class="text-dark"> back to list </a>
+        </div>
+
+    </div>*@
+
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+
+
+        <p style="text-align:right;padding-right:70px">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+
+        <div class="table-responsive">
+            <!-- Makes the table responsive -->
+            <table  id="datatable" class="table table-striped table-bordered">
+                <!-- Added Bootstrap classes -->
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Designation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NetSalary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PreviousMonthSalary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ThisMonthSalary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalaryChange)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Reason)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Handledby)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NetSalary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PreviousMonthSalary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ThisMonthSalary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SalaryChange)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Reason)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Handledby)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */  id = item.Empid }, new { @class = "btn btn-edit" }) |
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ id = item.Empid }) |*@
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ id = item.Empid }, new { @class = "btn btn-delete" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+ $(document).ready(function () {
+
+     $("#datatable").DataTable({
+         // Custom options for DataTable
+         paging: true,
+         searching: true,
+         ordering: true,
+         lengthMenu: [5, 10, 25, 50, 100],
+         pageLength: 10,
+         language: {
+             search: "Custom Search:",  // Customize search label
+             lengthMenu: "Display _MENU_ records per page",
+             info: "Showing _START_ to _END_ of _TOTAL_ entries",
+             infoEmpty: "No entries to show",
+             zeroRecords: "No matching records found"
+         }
+     });
+
+        });
+
+
+</script>

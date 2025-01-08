@@ -1,0 +1,24 @@
+﻿@model AptEMS.Models.PaymentDetailsViewModel
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Payment for Agreement: @Model.AgreementID</h2>
+    <p><strong>Client Name:</strong> @Model.ClientName</p>
+    <p><strong>Fee Amount:</strong> ₹@Model.FeeAmount</p>
+
+    <form method="post" action="@Url.Action("ProcessPayment", "Payments")">
+        <input type="hidden" name="agreementId" value="@Model.AgreementID" />
+        <input type="hidden" name="amount" value="@Model.FeeAmount" />
+
+        <div class="form-group">
+            <label for="paymentMethod">Select Payment Method:</label>
+            @Html.DropDownList("paymentMethod", (SelectList)ViewBag.PaymentMethods, "Select Method", new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Proceed to Pay</button>
+    </form>
+</div>

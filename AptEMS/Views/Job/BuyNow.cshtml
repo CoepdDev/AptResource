@@ -1,0 +1,168 @@
+﻿@model IEnumerable<AptEMS.Models.PricingPackage>
+
+@{
+    ViewBag.Title = "Available Packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/BuyNow.css" rel="stylesheet" />
+
+<style>
+    .success-alert {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 18px;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="success-alert" style="background-color: #d4edda; color: #155724; padding: 20px; border: 1px solid #c3e6cb; border-radius: 5px;">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <p>No active packages are available at the moment.</p>
+}
+else
+{
+    <div class="package-container">
+        @foreach (var package in Model)
+        {
+            <div class="package-card">
+                <h3>@package.PackageName</h3>
+
+                <p class="price">
+                    @String.Format("₹{0}/{1}", package.Price, package.BillingCycle == "Yearly" ? "yr" : "mon")
+                </p>
+
+                <ul class="features">
+                    @foreach (var feature in package.Description.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <li>@feature</li>
+                    }
+                    <li><strong>Best For:</strong> @package.BestFor</li>
+                </ul>
+
+                <a href="@Url.Action("Enroll", "Client", new { packageId = package.PackageId })" class="btn btn-primary get-price-btn">Enroll Now</a>
+
+
+            </div>
+        }
+    </div>
+}
+
+
+
+
+
+
+<div class="hr-consultancy-container">
+    <div class="hr-card" style="background-color:#f0e68c;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/contract.png" alt="HR Policy Icon" />
+        <p style="font-size:22px;"><strong>HR Policy & Compliance Setup</strong></p>
+        <p style="font-size:18px;">Develop tailored HR policies that meet legal standards and ensure your organization stays compliant.</p>
+        <p style="font-size:18px;"><strong>Benefit:</strong> Reduces the risk of legal non-compliance by <span style="color:#ff6b6b;">85%</span>, improving overall organizational efficiency.</p>
+    </div>
+
+    <div class="hr-card" style="background-color:#add8e6;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/law.png" alt="Legal Compliance Icon" />
+        <p style="font-size:22px;"><strong>Employment Law Support & Guidance</strong></p>
+        <p style="font-size:18px;">Receive expert advice on employment law and ensure all employee-related legal matters are handled professionally.</p>
+        <p style="font-size:18px;"><strong>Benefit:</strong> Become <span style="color:#ff6b6b;">47x less likely</span> to face legal challenges by maintaining compliance with labor laws.</p>
+    </div>
+
+    <div class="hr-card" style="background-color:#dda0dd;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/shield.png" alt="Tribunal Support Icon" />
+        <p style="font-size:22px;"><strong>Employee Relations & Tribunal Support</strong></p>
+        <p style="font-size:18px;">Expert assistance in managing employee relations and representing your company in case of tribunals.</p>
+        <p style="font-size:18px;"><strong>Benefit:</strong> Be <span style="color:#ff6b6b;">13x less likely</span> to face tribunal claims, ensuring smoother resolution of disputes and legal protection.</p>
+    </div>
+</div>
+
+
+
+
+<div class="main-container">
+    <section class="pricing">
+        <h2>*versus national averages.</h2>
+        <p>Pricing is dependent on your number of employees and industry. Based on our Workplace Expert package over a five-year term.</p>
+        <ul>
+            <li><strong>Three to five-year terms are available.</strong></li>
+            <li>Fees may vary based on individual business circumstances.</li>
+        </ul>
+
+    </section>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1>Work smarter not harder,<br>With Atlas</h1>
+            <p>Atlas is a smart online hub packed full of all the tasks, training, tools, and insights you need to tick off your legal obligations, manage your people, and smash your growth goals.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+        <div class="hero-image">
+
+        </div>
+    </div>
+</div>
+<h2 style="text-align:center;">
+    <p>
+        Excellent <span class="rating">★★★★★</span> 5,660 reviews on Trustpilot
+    </p>
+</h2>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner" style="border:1px solid black; border-radius:10px; margin-bottom:10px;width:100%; margin:0 auto;">
+        <div class="carousel-item active">
+            <img src="~/Content/images/HR-consulting-firms_definition-1024x595.jpg" class="d-block w-100" alt="Slide 1" style="width: 30px; height: 500px; ">
+
+        </div>
+        <div class="carousel-item">
+            <img src="~/Content/images/human-resources-hr-consulting-slide1.png" class="d-block w-100" alt="Slide 2" style="width: 30px; height: 500px; ">
+        </div>
+        <div class="carousel-item">
+            <<img src="~/Content/images/HR-consulting.png" class="d-block w-100" alt="Slide 3" style="width: 30px; height: 500px; ">
+        </div>
+
+    </div>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" style="background-color:blue; height:40px; margin-top:230px; width:40px;margin-right:50px;border-radius:50px;" data-bs-slide="next">
+        <span class="carousel-control-next-icon" style="color:blue;" aria-hidden="true"></span>
+        <span class="visually-hidden" style="color:blue;">Next</span>
+    </a>
+</div>
+
+<script>
+    window.onload = function () {
+        const successMessage = document.getElementById("success-message");
+
+        // Show success message if it's set
+        if (successMessage && successMessage.textContent.trim() !== "") {
+            successMessage.style.display = "block";
+
+            // Hide the message after 1 second
+            setTimeout(() => {
+                successMessage.style.display = "none";
+
+                // Redirect to BuyNow page after another 0.5 second
+                setTimeout(() => {
+                    window.location.href = "/Job/BuyNow"; // Adjust URL as needed
+                }, 500);
+            }, 1000);
+        }
+    };
+
+</script>

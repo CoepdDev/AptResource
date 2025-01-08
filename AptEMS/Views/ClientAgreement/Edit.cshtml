@@ -1,0 +1,242 @@
+﻿@model AptEMS.Models.ClientAgreements
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Edit Client Agreement</h2>
+
+@using (Html.BeginForm("Edit", "ClientAgreement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+        @Html.HiddenFor(model => model.AgreementID)
+        <div class="container">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-md-6">
+
+
+                    <div class="form-group">
+                        <label for="ClientName">Client Name</label>
+                        @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyName">Company Name</label>
+                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EmailAddress">Email Address</label>
+                        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ContactNumber">Contact Number</label>
+                        @Html.TextBoxFor(model => model.ContactNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyAddress">Company Address</label>
+                        @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="WebsiteURL">Website URL</label>
+                        @Html.TextBoxFor(model => model.WebsiteURL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.WebsiteURL, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AgreementDate">Agreement Date</label>
+                        @Html.TextBoxFor(model => model.AgreementDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.AgreementDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EffectiveStartDate">Effective Start Date</label>
+                        @Html.TextBoxFor(model => model.EffectiveStartDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.EffectiveStartDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AgreementDuration">Agreement Duration</label>
+                        @Html.TextBoxFor(model => model.AgreementDuration, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AgreementDuration, "", new { @class = "text-danger" })
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label for="DigitalSignature">Digital Signature</label>
+                        @if (!string.IsNullOrEmpty(Model.DigitalSignature))
+                        {
+                            <div>
+                                <img src="@Url.Content(Model.DigitalSignature)" alt="Digital Signature" style="max-width: 150px; max-height: 100px;" />
+                            </div>
+                        }
+                        <input type="file" name="DigitalSignature" class="form-control" id="DigitalSignature" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+
+                   
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AuthorizedMembers">Authorized Members</label>
+                        @Html.TextBoxFor(model => model.AuthorizedMembers, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AuthorizedMembers, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyBankNames">Company Bank Names</label>
+                        @Html.TextBoxFor(model => model.CompanyBankNames, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CompanyBankNames, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="CompanyLogo">Company Logo</label>
+                        @if (!string.IsNullOrEmpty(Model.CompanyLogo))
+                        {
+                            <div>
+                                <img src="@Url.Content(Model.CompanyLogo)" alt="Company Logo" style="max-width: 150px; max-height: 150px;" />
+                            </div>
+                        }
+                        <input type="file" name="CompanyLogo" class="form-control" id="CompanyLogo" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>                    </div>
+
+                    <!-- Watermark Logo -->
+                    <div class="form-group">
+                        <label for="WatermarkLogo">Watermark Logo</label>
+                        @if (!string.IsNullOrEmpty(Model.WatermarkLogo))
+                        {
+                            <div>
+                                <img src="@Url.Content(Model.WatermarkLogo)" alt="Watermark Logo" style="max-width: 150px; max-height: 150px;" />
+                            </div>
+                        }
+                        <input type="file" name="WatermarkLogo" class="form-control" id="WatermarkLogo" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>                    </div>
+
+                    <div class="form-group">
+                        <label for="EmployeeRoles">Employee Roles</label>
+                        @Html.TextBoxFor(model => model.EmployeeRoles, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeRoles, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="OfficeTimings">Office Timings</label>
+                        @Html.TextBoxFor(model => model.OfficeTimings, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OfficeTimings, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LetterHeader">Letter Header</label>
+                        @if (!string.IsNullOrEmpty(Model.LetterHeader))
+                        {
+                            <div>
+                                <img src="@Url.Content(Model.LetterHeader)" alt="Letter Header" style="max-width: 150px; max-height: 150px;" />
+                            </div>
+                        }
+                        <input type="file" name="LetterHeader" class="form-control" id="LetterHeader" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>                    </div>
+
+                    <div class="form-group">
+                        <label for="Footer">Footer</label>
+                        @if (!string.IsNullOrEmpty(Model.Footer))
+                        {
+                            <div>
+                                <img src="@Url.Content(Model.Footer)" alt="Footer" style="max-width: 150px; max-height: 150px;" />
+                            </div>
+                        }
+                        <input type="file" name="Footer" class="form-control" id="Footer" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="Shift">Shift</label>
+                        @Html.TextBoxFor(model => model.Shift, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PhoneNumbers">Phone Number</label>
+                        @Html.TextBoxFor(model => model.PhoneNumbers, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PhoneNumbers, "", new { @class = "text-danger" })
+                    </div>
+
+                   
+
+                    <div class="form-group">
+                        <label for="FeeAmount">Fee Amount</label>
+                        @Html.TextBoxFor(model => model.FeeAmount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FeeAmount, "", new { @class = "text-danger" })
+                    </div>
+
+                   
+                    <div class="form-group">
+                        <label for="AdditionalNotes">Additional Notes</label>
+                        @Html.TextBoxFor(model => model.AdditionalNotes, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success">Create</button>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary ms-2" })
+                </div>
+            </div>
+        </div>
+    
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*<script>
+    document.querySelectorAll("input[type='file']").forEach(function (fileInput) {
+        fileInput.addEventListener("change", function (event) {
+            const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            const filePath = event.target.value;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert("Only photo files (.jpg, .jpeg, .png, .gif) are allowed.");
+                event.target.value = ""; // Clear the input
+            }
+        });
+    });
+</script>*@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    button {
+        width: 150px;
+    }
+</style>
+
+
+
+

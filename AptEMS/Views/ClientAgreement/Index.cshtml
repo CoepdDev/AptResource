@@ -1,0 +1,146 @@
+﻿
+@model IEnumerable<AptEMS.Models.ClientAgreements>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialnumbers = 1;
+}
+
+<h2>Client Agreements</h2>
+
+<p>
+    @Html.ActionLink("Create New Agreement", "Create", "ClientAgreement", new { }, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>S.NO</th>
+            <th>Client Name</th>
+            <th>Company Name</th>
+            <th>Email Address</th>
+            <th>Contact Number</th>
+            <th>Company Address</th>
+            <th>Website URL</th>
+            <th>Agreement Date</th>
+            <th>Effective Start Date</th>
+            <th>Agreement Duration</th>
+            <th>Authorized Members</th>
+            <th>Company Bank Names</th>
+
+            <th>Employee Roles</th>
+            <th>Office Timings</th>
+
+            <th>Shift</th>
+            <th>Phone Numbers</th>
+            <th>Fee Amount</th>
+            <th>Digital Signature</th>
+            <th>Company Logo</th>
+            <th>Water Logo</th>
+            <th>Letter Header</th>
+            <th>Footer</th>
+            <th>Additional Notes</th>
+            <th>View Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>payment</th>
+            <th>Generate</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var agreements in Model)
+        {
+            <tr>
+                <td>@serialnumbers</td>
+                <td>@agreements.ClientName</td>
+                <td>@agreements.CompanyName</td>
+                <td>@agreements.EmailAddress</td>
+                <td>@agreements.ContactNumber</td>
+                <td>@agreements.CompanyAddress</td>
+                <td>@agreements.WebsiteURL</td>
+
+                <td>@Html.DisplayFor(modelItem => agreements.AgreementDate)</td>
+                <td>@Html.DisplayFor(modelItem => agreements.EffectiveStartDate)</td>
+
+                <td>@agreements.AgreementDuration</td>
+
+                <td>@agreements.AuthorizedMembers</td>
+                <td>@agreements.CompanyBankNames</td>
+
+                <td>@agreements.EmployeeRoles</td>
+                <td>@agreements.OfficeTimings</td>
+
+
+                <td>@agreements.Shift</td>
+                <td>@agreements.PhoneNumbers</td>
+
+                <td>@agreements.FeeAmount</td>
+
+
+
+                <td>
+                    @if (!string.IsNullOrEmpty(agreements.DigitalSignature))
+                    {
+                        <a href="@Url.Content(agreements.DigitalSignature)" target="_blank">View File</a>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(agreements.CompanyLogo))
+                    {
+                        <a href="@Url.Content(agreements.CompanyLogo)" target="_blank">View File</a>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(agreements.WatermarkLogo))
+                    {
+                        <a href="@Url.Content(agreements.WatermarkLogo)" target="_blank">View File</a>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(agreements.LetterHeader))
+                    {
+                        <a href="@Url.Content(agreements.LetterHeader)" target="_blank">View File</a>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(agreements.Footer))
+                    {
+                        <a href="@Url.Content(agreements.Footer)" target="_blank">View File</a>
+                    }
+                </td>
+                <td>@agreements.AdditionalNotes</td>
+                <td>@Html.ActionLink("View Details", "DetailsView", new { id = agreements.AgreementID }, new { @class = "btn btn-info" })</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = agreements.AgreementID }, new { @class = "btn btn-warning btn-sm" })</td>
+                <td>
+                    @using (Html.BeginForm("Delete", "ClientAgreement", new { id = agreements.AgreementID }, FormMethod.Post, new { @class = "d-inline" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this client agreement?');">
+                            Delete
+                        </button>
+                    }
+                </td>
+
+
+                <td>
+
+                    <a href="@Url.Action("Payment", "Payments", new { agreementId = agreements.AgreementID })"
+                       class="btn btn-success @(agreements.IsPaid ? "disabled" : "")">
+                        Proceed to Payment
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Action("GenerateInvoice", "Payments", new { agreementId = agreements.AgreementID })'">Generate Invoice</button>
+                </td>
+
+            </tr>
+            serialnumbers++;
+        }
+    </tbody>
+</table>
+

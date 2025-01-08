@@ -1,0 +1,184 @@
+﻿@model IEnumerable<AptEMS.Models.JobPost>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialno = 1;
+}
+
+<style>
+    .filter-form {
+        display: flex;
+        gap: 150px; /* Space between each radio button */
+        align-items: center; /* Vertically center items */
+        justify-content: center; /* Center the radio buttons horizontally */
+        
+    }
+
+    .filter-label {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: #333;
+    }
+
+        .filter-label input[type="radio"] {
+            margin-right: 8px; /* Space between radio button and label text */
+        }
+
+    .filter-form label {
+        cursor: pointer; /* Make the entire label clickable */
+    }
+
+</style>
+<h2 style=" text-align: center; color: darkblue; text-decoration : underline;">Job Applicants</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-sm btn-success", style = "width: 130px; height: 45px; font-size: 20px;" })
+</p>
+<br />
+<div>
+    <form id="filterForm" method="get" action="@Url.Action("Index", "JobPost")" class="filter-form">
+        
+        <label class="filter-label">
+            <input type="radio" id="showActive" name="filter" value="active"
+                   @(Request.QueryString["filter"] == "active" ? "checked" : "") />
+            Active Job Posts
+        </label>
+        <label class="filter-label">
+            <input type="radio" id="showInactive" name="filter" value="inactive"
+                   @(Request.QueryString["filter"] == "inactive" ? "checked" : "") />
+            Inactive Job Posts
+        </label>
+    </form>
+</div>
+
+
+<!-- Job Posts Table -->
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+        <div class="table-responsive">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>Job Type</th>
+                        <th>Employment Type</th>
+                        <th>Scheduled Date</th>
+                        <th>Expiry Date</th>
+                        <th>Job Title</th>
+                        <th>Minimum Experience</th>
+                        <th>Maximum Experience</th>
+                        <th>Skills</th>
+                        <th>Job Location</th>
+                        <th>Minimum Salary</th>
+                        <th>Maximum Salary</th>
+                        <th>Industry</th>
+                        <th>Functions And Roles</th>
+                        <th>Education</th>
+                        <th>IsActive</th>
+                        <th>Recruiter Name</th>
+                        <th>Recruiter Designation</th>
+                        <th>Recruiter PhoneNumber</th>
+                        <th>Recruiter Email</th>
+                        <th>Recruiter Company Name</th>
+                        <th>Recruiter About Company</th>
+                        <th>Created By</th>
+                        <th>edit</th>
+                        <th>Map Application</th>
+                        <th>View</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@serialno</td>
+                            <td>@Html.DisplayFor(modelItem => item.JobType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EmploymentType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ScheduledDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ExpiryDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.JobTitle)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MinExperience)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MaxExperience)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Skills)</td>
+                            <td>@Html.DisplayFor(modelItem => item.JobLocation)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MinSalary)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MaxSalary)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Industry)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FunctionsAndRoles)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                            <td>
+                                @if (item.IsActive)
+                                {
+                                    <span style="color: green;">Active</span>
+                                }
+                                else
+                                {
+                                    <span style="color: red;">Inactive</span>
+                                }
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterDesignation)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterPhoneNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterEmail)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterCompanyName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RecruiterAboutCompany)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Createdby)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.JobPostID }, new { @class = "btn btn-sm btn-primary" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Map Application", "ViewJobApplications", "JobApplication", new { jobPostId = item.JobPostID }, new { @class = "btn btn-sm btn-success" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("View", "Details", new { id = item.JobPostID }, new { @class = "btn btn-sm btn-info" })
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("Delete", "JobPost", new { id = item.JobPostID }, FormMethod.Post, new { @class = "d-inline" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this job posting?');">
+                                        Delete
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                        serialno++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("input[name='filter']").change(function () {
+            $("#filterForm").submit();
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Initialize DataTable
+        $("#datatable").DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthMenu: [5, 10, 25, 50, 100],
+            pageLength: 10,
+            language: {
+                search: "Custom Search:",
+                lengthMenu: "Display _MENU_ records per page",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "No entries to show",
+                zeroRecords: "No matching records found"
+            }
+        });
+
+
+    });
+</script>

@@ -1,0 +1,315 @@
+﻿@model AptEMS.Models.Enrollment
+
+@{
+    ViewBag.Title = "Enroll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: #fff;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+            .form-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+            .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                outline: none;
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .success-alert {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 18px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CAPTCHA Section Styling */
+        #captcha-section {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .captcha-display {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 5px 0 0 5px;
+            flex-grow: 1;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .refresh-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 5px 5px 0;
+            outline: none;
+        }
+
+            .refresh-btn:hover {
+                background-color: #218838;
+            }
+
+        #captcha-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .captcha-status {
+            font-size: 12px;
+            color: red;
+            margin-top: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="form-container">
+            <h2>Enroll for @ViewBag.PackageName</h2>
+            <p>Price: ₹@ViewBag.PackagePrice / @ViewBag.BillingCycle</p>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div id="success-message" class="success-alert">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @using (Html.BeginForm("Enroll", "Client", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.PackageId, new { Value = ViewBag.PackageId })
+
+
+                <div>
+                    <label for="FirstName">First Name <span style="color:red;">*</span></label>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="LastName">Last Name <span style="color:red;">*</span></label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="Email">Email <span style="color:red;">*</span></label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="Mobile">Mobile <span style="color:red;">*</span></label>
+                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Enter mobile number" })
+                    @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="Company">Company</label>
+                    @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = "Enter company name" })
+                    @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="Location">Location</label>
+                    @Html.TextBoxFor(m => m.Location, new { @class = "form-control", placeholder = "Enter location" })
+                    @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="Remarks">Remarks</label>
+                    @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control", placeholder = "Enter remarks (optional)", rows = 4 })
+                    @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "text-danger" })
+                </div>
+
+                <div id="captcha-section">
+                    <label for="captcha-input" class="captcha-label">Enter CAPTCHA:</label>
+                    <div class="captcha-container">
+                        <div id="image" class="captcha-display">Loading...</div>
+                        <button type="button" onclick="generateCaptcha()" class="refresh-btn" value=" " title="Refresh CAPTCHA">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="captcha-input" placeholder="Enter CAPTCHA code" class="form-control" />
+                    <p id="captcha-status" class="captcha-status"></p>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="btn btn-primary">Submit Enrollment</button>
+            }
+        </div>
+    </div>
+
+    <script>
+        // Function to generate CAPTCHA
+        function generateCaptcha() {
+            const captchaValue = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('image').textContent = captchaValue;
+            document.getElementById('image').setAttribute('data-captcha', captchaValue);
+        }
+
+        // Validate CAPTCHA function
+        function validateCaptcha() {
+            const enteredValue = document.getElementById('captcha-input').value.trim();
+            const captchaValue = document.getElementById('image').getAttribute('data-captcha');
+            const statusElement = document.getElementById('captcha-status');
+
+            if (!enteredValue) {
+                statusElement.textContent = "CAPTCHA is required.";
+                statusElement.style.color = "red";
+                return false;
+            }
+
+            if (enteredValue !== captchaValue) {
+                statusElement.textContent = "CAPTCHA validation failed. Try again!";
+                statusElement.style.color = "red";
+                return false;
+            }
+
+            statusElement.textContent = "CAPTCHA validated successfully!";
+            statusElement.style.color = "green";
+            return true;
+        }
+
+        // Attach CAPTCHA validation to form submission
+        document.getElementById('btnSubmit').addEventListener('click', function (event) {
+            if (!validateCaptcha()) {
+                event.preventDefault(); // Prevent form submission if CAPTCHA validation fails
+            }
+        });
+
+        // Call generateCaptcha on page load
+        document.addEventListener("DOMContentLoaded", generateCaptcha);
+    </script>
+
+    <script>
+        window.onload = function () {
+            const successMessage = document.getElementById("success-message");
+
+            // Show success message if it's set
+            if (successMessage && successMessage.textContent.trim() !== "") {
+                successMessage.style.display = "block";
+
+                // Hide the message after 1 second
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+
+                    // Redirect to BuyNow page after another 0.5 second
+                    setTimeout(() => {
+                        window.location.href = "/Job/BuyNow"; // Adjust URL as needed
+                    }, 500);
+                }, 1000);
+            }
+        };
+
+    </script>
+</body>
+
+
+

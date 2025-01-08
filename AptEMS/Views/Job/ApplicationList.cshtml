@@ -1,0 +1,113 @@
+﻿@model IEnumerable<AptEMS.ViewModels.CombinedJobApplicationViewModel>
+
+@{
+    ViewBag.Title = "Application List";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialno = 1;
+}
+
+
+<h2>Applicants Details</h2>
+<br />
+<a href="@Url.Action("Create", "Job")" class="btn btn-primary">Add New Candidate</a>
+<br />
+<hr />
+
+<!-- Link necessary stylesheets -->
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+        <div class="table-responsive">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>SNO</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Father's Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Specialization</th>
+                        <th>Total Experience</th>
+                        <th>Relevant Experience</th>
+                        <th>Key Skills</th>
+                        <th>Strengths</th>
+                        <th>Designation</th>
+                        <th>Current Location</th>
+                        <th>Present CTC</th>
+                        <th>Expected CTC</th>
+                        <th>Notice Period</th>
+                        <th>Education</th>
+                        <th>Resume</th>
+                        <th>Created By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var application in Model)
+                    {
+                        <tr>
+                            <td>@serialno</td>
+                            <td>@application.Id</td>
+                            <td>@application.Name</td>
+                            <td>@application.Email</td>
+                            <td>@application.Mobile</td>
+                            <td>@application.FatherName</td>
+                            <td>@application.Dob.ToString("yyyy-MM-dd")</td>
+                            <td>@application.Gender</td>
+                            <td>@application.Specialization</td>
+                            <td>@application.TotalExperience</td>
+                            <td>@application.RelevantExperience</td>
+                            <td>@application.KeySkills</td>
+                            <td>@application.Strengths</td>
+                            <td>@application.Designation</td>
+                            <td>@application.CurrentLocation</td>
+                            <td>@application.PresentCTC</td>
+                            <td>@application.ExpectedCTC</td>
+                            <td>@application.NoticePeriod</td>
+                            <td>@application.Education</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(application.ResumeFilePath))
+                                {
+                                    <a href="@Url.Content(application.ResumeFilePath)" target="_blank">View Resume</a>
+                                }
+                                else
+                                {
+                                    <span>No Resume Uploaded</span>
+                                }
+                            </td>
+                            <td>@application.CreatedBy</td>
+                            <td>
+                                @Html.ActionLink("Map Application", "MapApplicationToJob", "JobApplication", new { applicationId = application.Id }, null)
+
+                                @using (Html.BeginForm("DeleteApplication", "Job", new { id = application.Id }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this application?');">Delete</button>
+                                }
+                            </td>
+                        </tr>
+                        serialno++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts for DataTable -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            "order": [[0, "asc"]],
+            "pageLength": 10
+        });
+    });
+</script>
+

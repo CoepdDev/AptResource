@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<head>
+    <link href="~/Content/Dashboard.css" rel="stylesheet" />
+</head>
+
+<main>
+    
+
+
+
+
+    <main>
+        <div class="cards">
+
+            <div class="card">
+                <div>
+                    <h3>Selected candidates</h3>
+                    <span>Selected candidates</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Selected candidates" width="200" height="200"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>Agreement</h3>
+                    <span>Agreement</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Agreement" width="150" height="150"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>Hirings</h3>
+                    <span>Hirings</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Hirings" width="150" height="150"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>Clients</h3>
+                    <span>Clients</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Clients" width="150" height="150"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>Sales </h3>
+                    <span>Sales</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Sales" width="150" height="150"></canvas>
+                </div>
+            </div>
+
+            <!-- New "Available Items" Card -->
+            <div class="card">
+                <div>
+                    <h3>Pending Amounts</h3>
+                    <span>Pending Amounts</span>
+                </div>
+                <div class="icon">
+                    <canvas id="Pending Amounts" width="150" height="150"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>// Example Data for the charts
+        var usersData = [57, 43];
+        var reportsData = [25, 75,38];
+        var settingsData = [60, 40];
+        var revenueData = [2567, 1581, 1954, 2399, 3400, 3010];
+        var logoutData = [40,34,44,56,67,73,77, 68];
+        var itemsData = [200, 300, 250, 400];  // Data for available items
+
+        // Create a chart for Users
+        var ctxUsers = document.getElementById('Clients').getContext('2d');
+        new Chart(ctxUsers, {
+            type: 'pie',  // Pie chart
+            data: {
+                labels: ['Active', 'Inactive'],
+                datasets: [{
+                    data: usersData,
+                    backgroundColor: ['#36A2EB', '#FF6384'],
+                    hoverBackgroundColor: ['#36A2EB', '#FF6384']
+                }]
+            }
+        });
+
+        // Create a chart for Reports
+        var ctxReports = document.getElementById('Selected candidates').getContext('2d');
+        new Chart(ctxReports, {
+            type: 'bar',  // Bar chart
+            data: {
+                labels: ['Selected', 'Rejected','Onhold'],
+                datasets: [{
+                    data: reportsData,
+                    backgroundColor: ['#4CAF50', '#FFC107','#447379'],
+                    hoverBackgroundColor: ['#4CAF50', '#FFC107', '#447379']
+                }]
+            }
+        });
+
+        // Create a chart for Settings
+        var ctxSettings = document.getElementById('Agreement').getContext('2d');
+        new Chart(ctxSettings, {
+            type: 'doughnut',  // Doughnut chart
+            data: {
+                labels: ['Pending', 'Approved'],
+                datasets: [{
+                    data: settingsData,
+                    backgroundColor: ['#FF9800', '#9E9E9E'],
+                    hoverBackgroundColor: ['#FF9800', '#9E9E9E']
+                }]
+            }
+        });
+
+        // Create a chart for Logout
+        var ctxLogout = document.getElementById('Hirings').getContext('2d');
+        new Chart(ctxLogout, {
+            type: 'line',  // Line chart
+            data: {
+                labels: ['First Week', 'Second Week', 'Third Week', 'Fourth Week', 'Fifth Week', 'Sixth Week', 'Seventh Week', 'Eigth Week'],
+                datasets: [{
+                    label: 'Hirings',  
+                    data: logoutData,
+                    borderColor: '#FF6347',
+                    fill: false
+                }]
+            }
+        });
+
+        // Create a chart for Revenue
+        var ctxRevenue = document.getElementById('Sales').getContext('2d');
+        new Chart(ctxRevenue, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Sales',
+                    data: revenueData,
+                    borderColor: '#FF6347',
+                    fill: false
+                }]
+            }
+        });
+
+        // Create a chart for Available Items
+        var ctxItems = document.getElementById('Pending Amounts').getContext('2d');
+        new Chart(ctxItems, {
+            type: 'bar',  // Bar chart
+            data: {
+                labels: ['Item A', 'Item B', 'Item C', 'Item D'],
+                datasets: [{
+                    label: 'Pending Amounts',
+                    data: itemsData,
+                    backgroundColor: ['#2196F3', '#FFC107', '#4CAF50', '#9E9E9E'],
+                    hoverBackgroundColor: ['#2196F3', '#FFC107', '#4CAF50', '#9E9E9E']
+                }]
+            }
+        });
+    </script>
+</main>

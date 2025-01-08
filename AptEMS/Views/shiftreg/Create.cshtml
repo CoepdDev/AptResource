@@ -1,0 +1,95 @@
+﻿@model AptEMS.Models.Shiftreg
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<h2 style="text-align:center">Create Shift Attendence </h2>
+
+
+<div style="margin: 50px 100px 10px 50px; background-color: lightgray; border-radius: 10px; padding: 30px 10px 10px 80px">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+      
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.s_type, "Shift Type :", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+
+              
+
+                    @Html.DropDownListFor(model => model.s_type, new SelectList(ViewBag.Shifts, "Value", "Text"), "--Select Shift Type--", new { @class = "form-control" })
+
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.s_start, "Shift Start :", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.s_start, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.s_start, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.s_end, "Shift End : ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.s_end, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.s_end, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.brk, "Break :", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.brk, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.brk, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.attendence, "Attendence :", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.attendence,
+                       new SelectList(new List<SelectListItem>
+                 {
+                          new SelectListItem { Text = "Daily", Value = "Daily" },
+                         new SelectListItem { Text = "Weekly", Value = "Weekly" }
+                 }, "Value", "Text"),
+                     "--Select Attendance Type--",
+                      new { @class = "form-control" }
+     )
+                    @Html.ValidationMessageFor(model => model.attendence, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <input type="submit" value="Create" class="btn btn-default my-create-button" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

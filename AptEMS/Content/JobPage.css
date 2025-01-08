@@ -1,0 +1,595 @@
+﻿.container-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+    width:97%;
+    text-align: center; /* Center align text for desktop */
+    color:black;
+    border: 2px solid black;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+.text-container-2 {
+    flex: 1;
+    padding: 20px;
+    
+    text-align: justify;
+    margin-right: 20px;
+    font-family: "Trebuchet MS"; /* Set font family to Trebuchet MS */
+}
+
+.title-text.main-heading {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.image-container-left {
+    flex: 1;
+    padding: 20px;
+    max-width: 50%;
+}
+
+    .image-container-left img {
+        width: 100px;
+        height: 200px;
+        object-fit: cover;
+        margin: 20px 0; /* Top and bottom margin of 20px */
+    }
+
+.gradient-background {
+    width: 100%;
+    height: 350px;
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Responsive CSS for mobile view */
+@media only screen and (max-width: 768px) {
+    .container-2 {
+        flex-direction: column;
+        align-items: center; /* Center items vertically */
+        text-align: center;
+    }
+
+    .text-container-2,
+    .image-container-left {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .image-container-left {
+        margin-bottom: 20px;
+    }
+
+    .title-text.main-heading {
+        font-size: 40px;
+    }
+
+    .text-container-2 h3 {
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: center; /* Align text center for mobile */
+        margin: 0; /* Remove default margin */
+    }
+}
+
+.container1 {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Space items evenly */
+    margin: 20px;
+    font-family: "Trebuchet MS";
+}
+
+.box1 {
+    border: 2px solid;
+    padding: 20px;
+    width: 48%; /* Set width to 48% to fit two items per row with spacing */
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+    margin-bottom: 20px; /* Add some space between rows */
+}
+
+    .box1 p {
+        font-size: 20px;
+    }
+
+.row1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container1 {
+    display: flex;
+    margin-top: 10px;
+}
+
+.apply-button {
+    background-color: orangered;
+    border: 2px solid #fff;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: white;
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s, border-color 0.3s; /* Add transition for hover effect */
+}
+
+    .apply-button:hover {
+        background-color: darkorange; /* Change to a slightly different color on hover */
+        border-color: lightgray; /* Change border color on hover */
+    }
+
+
+.small-box {
+    border: 1px solid Black;
+    padding: 3px 15px;
+    border-radius: 5px;
+    
+    text-align: center;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width:30%;
+    height:50px;
+    margin: 0 auto;
+}
+
+.search-box {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1; /* Allow the input to take the remaining space */
+}
+
+.search-button {
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    .search-button:hover {
+        background-color: #0056b3; /* Darker shade for hover effect */
+    }
+
+/* Job Page details styles */
+
+.container {
+    max-width: 100%;
+    display: flex;
+    column-gap:10px;
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+}
+.job-description {
+    border: 1px solid black;
+    border-radius:15px;
+    width:100%;
+    padding:10px;
+    height:650px;
+}
+.application-form {
+    border: 1px solid black;
+    border-radius: 15px;
+    width:100%;
+    padding:10px;
+}
+.job-description h2, .application-form h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.job-description p, .application-form label {
+    margin: 10px 0;
+    color: #555;
+}
+
+.application-form input[type="text"],
+.application-form input[type="email"],
+.application-form input[type="file"],
+.application-form select {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.application-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .application-form button:hover {
+        background-color: #218838;
+    }
+
+.dob-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .dob-container select {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+        .dob-container select:last-child {
+            margin-right: 0;
+        }
+
+@media (max-width: 600px) {
+    .dob-container {
+        flex-direction: column;
+    }
+
+        .dob-container select {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+}
+
+/* Buy Now Page styles*/
+
+
+.pricing-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    margin-top:30px;
+    padding-top:30px;
+    padding-bottom:30px;
+    margin-bottom:30px;
+    border-radius:10px;
+}
+
+.pricing-card {
+    
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+    .pricing-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .pricing-card h3 {
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+.price {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+    .price span {
+        font-size: 2.5em;
+        color: #e17055;
+    }
+
+ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+    ul li {
+        font-size: 1em;
+        color: #555;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+.get-price-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #ff6b6b;
+    color: #fff;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+    .get-price-btn:hover {
+        background-color: #ff4757;
+    }
+
+.highlighted {
+    border: 2px solid #ff6b6b;
+    position: relative;
+}
+
+    .highlighted::before {
+        content: "Most Popular";
+        background-color: #ff6b6b;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 50px;
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+@media (max-width: 768px) {
+    .pricing-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .pricing-section {
+        flex-direction: column;
+    }
+}
+
+.Safetycontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adding gap instead of margin on individual cards */
+    padding-bottom:20px;
+}
+
+.Safetycard {
+    display: flex;
+    /* Ensure content stacks vertically */
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 60px;
+    background-color: lightpink;
+}
+
+    .Safetycard img {
+        margin-top:30px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px; /* Adds space below the image */
+    }
+
+@media (max-width: 768px) {
+    .Safetycard {
+        width: 100%;
+    }
+}
+.pricing {
+    text-align: center;
+    padding: 20px;
+}
+
+.pricing h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pricing p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.pricing ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing li {
+    text-align:center;
+    margin-bottom: 10px;
+}
+
+     .rating {
+        font-size: 20px;
+        color: #ff9900;
+    }
+
+.hero {
+    background-color: #f0f0f0;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius:   5px;
+}
+
+.hero-image
+  {
+    text-align: center;
+    margin-top: 30px;
+}
+
+img {
+    max-width: 50%;
+}
+
+.carousel-inner img {
+    width: 50%;
+    height: auto;
+    object-fit: cover; /* Ensures image fills the container without distortion */
+}
+
+.carousel-indicators {
+    bottom: 20px; /* Adjust the position */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Adds visibility to controls */
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 250px; /* Adjust height for mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel-inner img {
+        height: 500px; /* Adjust height for desktop */
+    }
+}
+
+/* Login Page styling code */
+
+.login-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+    .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #555;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+        .input-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .login-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .login-form h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+    }
+
+    .login-form h2 {
+        font-size: 1.2rem;
+    }
+}

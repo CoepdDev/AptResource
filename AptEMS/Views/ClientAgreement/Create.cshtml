@@ -1,0 +1,289 @@
+﻿@model AptEMS.Models.ClientAgreements
+@{
+    ViewBag.Title = "Create Client Agreement";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+
+<h2 class="text-center mb-4">Create Client Agreement</h2>
+
+@using (Html.BeginForm("Create", "ClientAgreement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label for="AuthorizedMembers">Authorized Members</label>
+                    @Html.TextBoxFor(model => model.AuthorizedMembers, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AuthorizedMembers, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="CompanyBankNames">Company Bank Names</label>
+                    @Html.TextBoxFor(model => model.CompanyBankNames, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CompanyBankNames, "", new { @class = "text-danger" })
+                </div>
+
+
+                <!-- Company Logo Upload -->
+                <div class="form-group">
+                    @Html.Label("Company Logo", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="CompanyLogo" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+                </div>
+
+                <!-- Watermark Logo Upload -->
+                <div class="form-group">
+                    @Html.Label("Watermark Logo", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="WatermarkLogo" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="EmployeeRoles">Employee Roles</label>
+                    @Html.TextBoxFor(model => model.EmployeeRoles, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmployeeRoles, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="OfficeTimings">Office Timings</label>
+                    @Html.TextBoxFor(model => model.OfficeTimings, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.OfficeTimings, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Letter Header", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="LetterHeader" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Footer", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="Footer" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Shift">Shift</label>
+                    @Html.TextBoxFor(model => model.Shift, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
+                </div>
+
+                
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumbers, "Mobile Number")<br>
+                <input id="mobile" name="PhoneNumbers" type="tel" class="form-control mobile-input" placeholder="Enter your mobile number" />
+                @Html.ValidationMessageFor(model => model.PhoneNumbers, "", new { @class = "validation-error" })
+            </div>
+               
+
+
+
+               
+
+               
+
+                <div class="form-group">
+                    @Html.Label("Digital Signature", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="DigitalSignature" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                        <small class="text-muted">Allowed file types: .jpg, .jpeg, .png, .gif</small>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ClientName">Client Name</label>
+                    @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="CompanyName">Company Name</label>
+                    @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="EmailAddress">Email Address</label>
+                    @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+                
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ContactNumber, "Contact Number")<br>
+                    <input id="contactNumber" name="ContactNumber" type="tel" class="form-control mobile-input" placeholder="Enter your contact number" />
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "validation-error" })
+                </div>
+
+               
+
+                <div class="form-group">
+                    <label for="CompanyAddress">Company Address</label>
+                    @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="WebsiteURL">Website URL</label>
+                    @Html.TextBoxFor(model => model.WebsiteURL, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.WebsiteURL, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="AgreementDate">Agreement Date</label>
+
+                    @Html.TextBoxFor(model => model.AgreementDate, new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(model => model.AgreementDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="EffectiveStartDate">Effective Start Date</label>
+                    @Html.TextBoxFor(model => model.EffectiveStartDate, new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(model => model.EffectiveStartDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="AgreementDuration">Agreement Duration</label>
+                    @Html.TextBoxFor(model => model.AgreementDuration, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AgreementDuration, "", new { @class = "text-danger" })
+                </div>
+
+                
+
+                
+
+                <div class="form-group">
+                    <label for="FeeAmount">Fee Amount</label>
+                    @Html.TextBoxFor(model => model.FeeAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FeeAmount, "", new { @class = "text-danger" })
+                </div>
+
+                
+                
+                <div class="form-group">
+                    <label for="AdditionalNotes">Additional Notes</label>
+                    @Html.TextBoxFor(model => model.AdditionalNotes, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success">Create</button>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary ms-2" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+<!-- Include intl-tel-input CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/css/intlTelInput.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+    // Select all inputs with a specific class (e.g., 'mobile-input')
+    var mobileInputs = document.querySelectorAll(".mobile-input");
+
+    // Loop through each input and initialize intl-tel-input
+    mobileInputs.forEach(function (input) {
+        var iti = window.intlTelInput(input, {
+            separateDialCode: false, // Include country code within the input
+            initialCountry: "auto", // Auto-detect country
+            geoIpLookup: function (callback) {
+                // Fetch user's country using a GeoIP service
+                fetch('https://ipapi.co/json/')
+                    .then(function (response) { return response.json(); })
+                    .then(function (data) { callback(data.country_code); })
+                    .catch(function () { callback('us'); }); // Fallback to US
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Enable validation
+        });
+
+        // Validate the mobile number on form submission
+        document.querySelector("form").addEventListener("submit", function (event) {
+            if (!iti.isValidNumber()) {
+                alert("Please enter a valid mobile number.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+
+        // Optional: Log the full number with country code on blur
+        input.addEventListener("blur", function () {
+            if (iti.isValidNumber()) {
+                console.log("Full number with country code: ", iti.getNumber());
+            } else {
+                console.log("Invalid number");
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    document.querySelectorAll("input[type='file']").forEach(function (fileInput) {
+        fileInput.addEventListener("change", function (event) {
+            const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            const filePath = event.target.value;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert("Only photo files (.jpg, .jpeg, .png, .gif) are allowed.");
+                event.target.value = ""; // Clear the input
+            }
+        });
+    });
+</script>
+
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    button {
+        width: 150px;
+    }
+
+    .validation-error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+</style>
+
+

@@ -1,0 +1,126 @@
+﻿.package-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.package-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+    .package-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .package-card h3 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: 800;
+    }
+
+.price {
+    font-size: 1.3em;
+    color: #88549e;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.features {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+    color: #555;
+}
+
+    .features li {
+        margin: 5px 0;
+    }
+
+.get-price-btn {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .get-price-btn:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+
+
+
+
+.container {
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+    padding: 20px; /* Padding inside the container */
+    background-color: #f9f9f9; /* Optional background color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    border: 2px solid pink;
+}
+
+
+.hero-content {
+    flex: 1; /* Allow this to grow */
+    padding: 20px; /* Padding around content */
+}
+
+.hero-image img {
+    max-width: 100%; /* Ensure the image is responsive */
+    border-radius: 10px; /* Optional: rounded corners for the image */
+}
+
+.btn {
+    display: inline-block; /* Make the link behave like a button */
+    padding: 10px 20px; /* Add padding around the text */
+    background-color: #ff6b6b; /* Set the background color */
+    color: white; /* Set text color */
+    text-decoration: none; /* Remove underline from the link */
+    border-radius: 5px; /* Optional: rounded corners */
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+    .btn:hover {
+        background-color: #ff4c4c; /* Darker shade on hover */
+    }
+
+.hr-consultancy-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.hr-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 32%;
+}
+
+    .hr-card img {
+        max-width: 50px;
+        margin-bottom: 10px;
+    }

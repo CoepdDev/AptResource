@@ -1,0 +1,368 @@
+﻿@model AptEMS.Models.JobPost
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-message" class="success-alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h1>Job Posting Form</h1>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="radio-group">
+                    <label>
+                        @Html.RadioButtonFor(model => model.JobType, "Permanent") Permanent
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.JobType, "Contract") Contract
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.JobType, "Freelancer") Freelancer
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmploymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="radio-group">
+                    <label>
+                        @Html.RadioButtonFor(model => model.EmploymentType, "Full-Time") Full-Time
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.EmploymentType, "Part-Time") Part-Time
+                    </label>
+
+                </div>
+                @Html.ValidationMessageFor(model => model.EmploymentType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Scheduled Date<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ScheduledDate, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.ScheduledDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Last Date<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExpiryDate, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <h2>Job Details</h2>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.JobTitle)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.MinExperience)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinExperience, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinExperience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.MaxExperience)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxExperience, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxExperience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <!-- Key Skills Field -->
+        <label for="key_skills">Key Skills<span style="color:red;">*</span></label>
+
+        @Html.DropDownListFor(model => model.Skills, new SelectList(ViewBag.Skill, "Value", "Text"), "--Select Skill--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.Skills, "", new { @class = "text-danger" })
+
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.JobDescription)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.JobDescription, new { @class = "form-control", id = "JobDescription" })
+                @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Company Address Field -->
+        <label for="Current_Location">Job Location<span style="color:red;">*</span></label>
+        @Html.DropDownListFor(model => model.JobLocation, new SelectList(ViewBag.Location, "Value", "Text"), "--Select Current Location--", new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.JobLocation, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.MinSalary)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinSalary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinSalary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.MaxSalary)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxSalary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxSalary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.Industry)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Industry, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Industry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.FunctionsAndRoles)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FunctionsAndRoles, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FunctionsAndRoles, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <label for="Education">Education<span style="color:red;">*</span></label>
+        @Html.DropDownListFor(model => model.Education,
+            new SelectList(ViewBag.Qualification, "Value", "Text"),
+            "--Select Qualification Type--",
+            new { @class = "form-control", style = " min-height: 40px; line-height: 1.5;" })
+        @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+
+
+        <h2>Recruiter Information:</h2>
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.RecruiterName)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruiterName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecruiterName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.RecruiterDesignation)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruiterDesignation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecruiterDesignation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label class="control-label col-md-2">
+                    @Html.DisplayNameFor(model => model.RecruiterPhoneNumber)<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RecruiterPhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RecruiterPhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.RecruiterPhoneNumber, "Mobile Number")<span class="text-danger">*</span><br />
+            <input id="mobile" name="RecruiterPhoneNumber" type="tel" class="form-control" placeholder="Enter your mobile number" required />
+            <span id="mobile-error" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.RecruiterEmail)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruiterEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecruiterEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.RecruiterCompanyName)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruiterCompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecruiterCompanyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.RecruiterAboutCompany)<span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruiterAboutCompany, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RecruiterAboutCompany, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-secondary" })
+            </div>
+        </div>
+
+    </div>
+}
+<!-- Include CDN for intl-tel-input -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/css/intlTelInput.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.8/build/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+<script>
+    var input = document.querySelector("#mobile");
+    var iti = window.intlTelInput(input, {
+        separateDialCode: true,
+        initialCountry: "auto",
+        geoIpLookup: function (callback) {
+            fetch("https://ipinfo.io/json?token=<YOUR_TOKEN>")
+                .then((response) => response.json())
+                .then((data) => callback(data.country))
+                .catch(() => callback("India")); // Default to US
+        },
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    // Validate on form submission
+    document.querySelector("#jobPostForm").addEventListener("submit", function (event) {
+        if (!iti.isValidNumber()) {
+            document.querySelector("#mobile-error").innerText = "Please enter a valid mobile number.";
+            event.preventDefault(); // Prevent form submission
+        } else {
+            document.querySelector("#mobile-error").innerText = ""; // Clear error
+        }
+    });
+
+</script>
+<!-- Include CKEditor Script -->
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+<!-- Initialize CKEditor -->
+<script>
+    CKEDITOR.replace('JobDescription', {
+        toolbar: [
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+            { name: 'links', items: ['Link', 'Unlink'] },
+            { name: 'insert', items: ['Image', 'Table'] },
+            { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+            { name: 'colors', items: ['TextColor', 'BGColor'] },
+            { name: 'tools', items: ['Maximize'] }
+        ],
+        height: 300, // Adjust height as needed
+        removePlugins: 'elementspath', // Optional: Remove element path for cleaner UI
+        resize_enabled: true          // Allow resizing
+    });
+</script>
+<style>
+    .success-alert {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 18px;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script>
+    // Display success message and redirect after a delay
+    window.onload = function () {
+        const successMessage = document.getElementById("success-message");
+        if (successMessage) {
+            // Display the success message
+            successMessage.style.display = "block";
+
+            // Hide the success message after 2 seconds
+            setTimeout(() => {
+                successMessage.style.display = "none";
+
+                // Redirect to the BuyNow page after an additional delay
+                setTimeout(() => {
+                    window.location.href = "/Job/ApplicationList";
+                }, 500);
+            }, 1000);
+        }
+    };
+</script>

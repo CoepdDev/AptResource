@@ -1,0 +1,182 @@
+﻿@model AptEMS.Models.AdvancePayment
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Create</h2>
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AdvancePayment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label for="Empid" class="control-label col-md-2">
+                Empid <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="Empname" class="control-label col-md-2">
+                Empname <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Empname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Empname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Designation" class="control-label col-md-2">
+                Designation <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="AdvanceType" class="control-label col-md-2">
+                AdvanceType <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdvanceType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AdvanceType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="AdvanceAmount" class="control-label col-md-2">
+                AdvanceAmount <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdvanceAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AdvanceAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="RequestDate" class="control-label col-md-2">
+                RequestDate <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequestDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequestDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ApprovalDate" class="control-label col-md-2">
+                ApprovalDate <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ApprovalDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ApprovalDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="RepaymentMonths" class="control-label col-md-2">
+                RepaymentMonths <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RepaymentMonths, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RepaymentMonths, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="RepaymentSchedule" class="control-label col-md-2">
+                RepaymentSchedule <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RepaymentSchedule, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RepaymentSchedule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="RepaymentAmount" class="control-label col-md-2">
+                RepaymentAmount <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RepaymentAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RepaymentAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="DeductionStartDate" class="control-label col-md-2">
+                DeductionStartDate <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeductionStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DeductionStartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="DeductionEndDate" class="control-label col-md-2">
+                DeductionEndDate <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeductionEndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DeductionEndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Remarks" class="control-label col-md-2">
+                Remarks <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default my-save-button" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+            </div>
+        </div>
+    </div>
+    }
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>
+
+<style>
+    label {
+    display: inline; /* Ensure the label is inline */
+}
+
+label span.text-danger {
+    display: inline; /* Ensure the span with the asterisk is inline */
+    margin-left: 5px; /* Optional: adjust the spacing between the label and asterisk */
+}
+
+</style>

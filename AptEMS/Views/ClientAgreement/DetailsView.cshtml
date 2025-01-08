@@ -1,0 +1,91 @@
+﻿@model AptEMS.Models.ClientAgreements
+@{
+    ViewBag.Title = "Company Configuration Data";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div style="background-color: #003d4d; color: white; padding: 20px; border-radius: 10px;">
+    <h2 style="text-align: center; text-transform: uppercase; border-bottom: 2px solid #4caf50; padding-bottom: 10px;">Company Configuration Data</h2>
+
+    <div style="margin: 20px 0;">
+        <h3 style="border-bottom: 2px solid #4caf50; display: inline-block; padding-bottom: 5px;">Company Details</h3>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div>
+            <strong>Authorized Members:</strong> <br />
+            <span>@Model.AuthorizedMembers</span>
+        </div>
+        <div>
+            <strong>Company Bank Names:</strong> <br />
+            <span>@Model.CompanyBankNames</span>
+        </div>
+        <div>
+            <strong>Employee Roles:</strong> <br />
+            <span>@Model.EmployeeRoles</span>
+        </div>
+        <div>
+            <strong>Phone Numbers:</strong> <br />
+            <span>@Model.PhoneNumbers</span>
+        </div>
+        <div>
+            <strong>Shift:</strong> <br />
+            <span>@Model.Shift</span>
+        </div>
+        <div>
+            <strong>Office Timings:</strong> <br />
+            <span>@Model.OfficeTimings</span>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <div>
+            <strong>Company Logo:</strong> <br />
+            @if (!string.IsNullOrEmpty(Model.CompanyLogo))
+            {
+                <img src="@Url.Content(Model.CompanyLogo)" alt="Company Logo" style="max-width: 150px; border: 1px solid white; border-radius: 5px;" />
+            }
+            else
+            {
+                <p>No logo available</p>
+            }
+        </div>
+        <div>
+            <strong>Watermark Logo:</strong> <br />
+            @if (!string.IsNullOrEmpty(Model.WatermarkLogo))
+            {
+                <img src="@Url.Content(Model.WatermarkLogo)" alt="Watermark Logo" style="max-width: 150px; border: 1px solid white; border-radius: 5px;" />
+            }
+            else
+            {
+                <p>No watermark logo available</p>
+            }
+        </div>
+        <div>
+            <strong>Letter Header:</strong> <br />
+            @if (!string.IsNullOrEmpty(Model.LetterHeader))
+            {
+                <img src="@Url.Content(Model.LetterHeader)" alt="Letter Header" style="max-width: 150px; border: 1px solid white; border-radius: 5px;" />
+            }
+            else
+            {
+                <p>No letter header available</p>
+            }
+        </div>
+        <div>
+            <strong>Footer:</strong> <br />
+            @if (!string.IsNullOrEmpty(Model.Footer))
+            {
+                <img src="@Url.Content(Model.Footer)" alt="Footer" style="max-width: 150px; border: 1px solid white; border-radius: 5px;" />
+            }
+            else
+            {
+                <p>No footer available</p>
+            }
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; text-align: center;">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success", style = "color: white; padding: 10px 20px; text-decoration: none;" })
+    </div>
+</div>

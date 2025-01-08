@@ -1,0 +1,102 @@
+﻿.container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items for responsiveness */
+    gap: 20px; /* Add consistent spacing between boxes */
+    margin: 20px auto;
+    max-width: 1200px; /* Limit the container width */
+    justify-content: space-between; /* Spread containers evenly */
+    align-items: flex-start; /* Align items at the top */
+}
+
+.job-details,
+.form-container {
+    flex: 1 1 48%; /* Equal width, with responsive flexibility */
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    box-sizing: border-box;
+}
+
+.job-details {
+    flex-grow: 1; /* Adjust content height naturally */
+}
+
+.form-container {
+    flex-grow: 1; /* Adjust content height naturally */
+}
+
+    /* Typography and Spacing */
+    .job-details h2,
+    .job-details h3,
+    .form-container h2 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+.job-details p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Form Styles */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container textarea {
+    resize: none;
+    height: 80px;
+}
+
+.form-container button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .form-container button:hover {
+        background-color: #0056b3;
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack containers vertically */
+        gap: 10px; /* Reduce spacing for smaller screens */
+    }
+
+    .job-details,
+    .form-container {
+        flex: 1 1 100%; /* Full width for smaller screens */
+        padding: 15px; /* Reduce padding for better fit */
+    }
+}

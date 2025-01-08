@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Redirecting to Razorpay";
+    Layout = null;
+}
+
+<script type="text/javascript">
+    window.onload = function () {
+        // Open Razorpay in a new tab
+        var razorpayUrl = '@ViewBag.RazorpayUrl';
+        window.open(razorpayUrl, '_blank');
+
+        // Optionally, redirect user to another page (e.g., back to index or payment status page)
+        window.location.href = '@Url.Action("Index", "ClientAgreement")'; // Change this to your desired action
+    }
+</script>
+
+<h2>Please wait while we redirect you to the payment page...</h2>

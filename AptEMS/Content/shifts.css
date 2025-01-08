@@ -1,0 +1,127 @@
+﻿/*index page*/
+.btn {
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 2px;
+}
+
+/* Specific button colors */
+.btn-edit {
+    background-color: #4CAF50; /* Green for Edit */
+}
+
+.btn-delete {
+    background-color: #f44336; /* Red for Delete */
+}
+
+/* Optional: Hover effect */
+.btn:hover {
+    opacity: 0.9;
+}
+
+.my-custom-button {
+    background-color: #007bff; /* Replace with your desired background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for button size */
+    text-decoration: none; /* Remove underline from link */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+    .my-custom-button:hover {
+        background-color: #0056b3; /* Replace with your desired hover color */
+        color: white; /* Ensure text color remains readable */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+/*    edit page*/
+
+       .my-custom-button {
+        background-color: #007bff; /* Background color */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Padding for button size */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Optional: rounded corners */
+        display: inline-block; /* Ensures it behaves like a button */
+    }
+
+        .my-custom-button:hover {
+            background-color: #0056b3; /* Hover color */
+            color: white; /* Ensure text color remains readable */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+    .my-save-button {
+        background-color: #28a745; /* Green background color */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Padding for button size */
+        text-align: center; /* Center text */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Optional: rounded corners */
+        cursor: pointer; /* Change cursor to pointer */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+        .my-save-button:hover {
+            background-color: #218838; /* Darker green hover color */
+            color: white; /* Ensure text color remains readable */
+        }
+
+/*        create page*/
+
+     
+
+
+.my-create-button {
+    background-color: #15d353; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 25px; /* Padding for button size */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from link */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+    .my-create-button:hover {
+        background-color: #0b4422; /* Hover color */
+        color: white; /* Ensure text color remains readable */
+    }
+
+    .my-custom-button {
+        background-color: #007bff; /* Background color */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Padding for button size */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Optional: rounded corners */
+        display: inline-block; /* Ensures it behaves like a button */
+    }
+
+        .my-custom-button:hover {
+            background-color: #0056b3; /* Hover color */
+            color: white; /* Ensure text color remains readable */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+/* Add this to your shifts.css file */
+.table-responsive {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+.table th, .table td {
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Displays ellipsis for overflowing text */
+}
+
+    /* Optional: You can set a max width for columns */
+    .table th:nth-child(3), .table td:nth-child(3) {
+        max-width: 150px; /* Example for LastName column */
+    }
+
+
+

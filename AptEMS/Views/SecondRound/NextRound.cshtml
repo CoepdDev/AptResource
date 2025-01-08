@@ -1,0 +1,117 @@
+﻿
+
+
+@model AptEMS.Models.SecondRound
+
+@{
+    ViewBag.Title = "NextRound";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Proceeding to Third Round</h2>
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+<div style="margin: 50px 100px 10px 100px; background-color: lightgray; border-radius: 10px; padding: 30px 0px 15px 60px">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InterviewerName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InterviewerName, new { htmlAttributes = new { @class = "form-control", Value = "", required = "required", placeholder = "Enter InterviewerName" } })
+                <span class="text-danger" id="interviewerNameError" style="display: none;">This field is required.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", Value = "" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control", Value = "", required = "required", placeholder = "Enter Remark" } })
+                <span class="text-danger" id="interviewerNameError" style="display: none;">This field is required.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Proceed" class="btn btn-default my-create-button" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn my-custom-button" })
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        // Function to handle form submission
+        function handleFormSubmission(event) {
+            // Prevent default form submission behavior
+            event.preventDefault();
+
+            // Simple validation logic
+            var isValid = true;
+
+            // Example check: You can add more complex validation logic here if needed
+            if ($('#InterviewerName').val().trim() === "" || $('#Remark').val().trim() === "") {
+                alert('Please fill out all required fields.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Display a custom validation message
+                alert("Proceeding to the next round");
+
+                // Optionally, you can proceed with form submission after validation
+                // This line will submit the form
+                $('form').off('submit', handleFormSubmission).submit();
+            }
+        }
+
+        // Attach the handler to the form submit event
+        $(document).ready(function () {
+            $('form').on('submit', handleFormSubmission);
+        });
+    </script>
+}
+

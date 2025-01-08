@@ -1,0 +1,165 @@
+﻿@model IEnumerable<AptEMS.Models.AdvancePayment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2>Adavnce Payment</h2>
+
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/shifts.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+
+
+        <p style="text-align:right;padding-right:70px">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+
+        <div class="table-responsive">
+            <!-- Makes the table responsive -->
+            <table id="datatable" class="table table-striped table-bordered">
+                <!-- Added Bootstrap classes -->
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Designation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdvanceType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdvanceAmount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RequestDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ApprovalDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RepaymentMonths)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RepaymentSchedule)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RepaymentAmount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DeductionStartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DeductionEndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Remarks)
+                        </th>
+                      
+                        <th> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdvanceType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdvanceAmount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RequestDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ApprovalDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RepaymentMonths)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RepaymentSchedule)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RepaymentAmount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeductionStartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeductionEndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Remarks)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ id = item.Empid }, new { @class = "btn btn-edit btn-sm" }) |
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */  id = item.Empid }) |*@
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ id = item.Empid }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#datatable").DataTable({
+            // Custom options for DataTable
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthMenu: [5, 10, 25, 50, 100],
+            pageLength: 10,
+            language: {
+                search: "Custom Search:",  // Customize search label
+                lengthMenu: "Display _MENU_ records per page",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "No entries to show",
+                zeroRecords: "No matching records found"
+            }
+        });
+
+    });
+
+
+</script>
+
+
+
+
+
+

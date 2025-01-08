@@ -1,0 +1,932 @@
+﻿@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="services-container">
+    <div class="services-content">
+        <h2>Our Services</h2>
+        <h1>Ready to hire like you’re in 2050?</h1>
+        <p>We’re revolutionising recruitment.</p>
+    </div>
+    <div class="services-form">
+        <h3>Talk to Sales</h3>
+        <form method="post" action="#">
+            <div class="form-group">
+                <label for="fullName">Full Name <span>*</span></label>
+                <input type="text" id="fullName" name="FullName" placeholder="Enter your Full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number <span>*</span></label>
+                <input type="text" id="contactNumber" name="ContactNumber" placeholder="+91 Enter Your Mobile Number" required>
+            </div>
+            <div class="form-group">
+                <label for="companyName">Company Name <span>*</span></label>
+                <input type="text" id="companyName" name="CompanyName" placeholder="Enter your Company Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID <span>*</span></label>
+                <input type="email" id="email" name="Email" placeholder="Enter your Email ID" required>
+            </div>
+            <button type="submit" class="btn-submit">Get in touch</button>
+        </form>
+    </div>
+
+</div>
+
+
+<div class="extra-text">
+    <div class="content">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <a href="#" target="_blank">Click Here to Get Early Access</a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <a href="#" target="_blank">Find Relevant Profiles</a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <a href="#" target="_blank">Hire Fast, Hire Right</a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <a href="#" target="_blank">Quick & Easy to Use</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="services-heading">Talent Solutions</h1>
+
+<div class="service-area">
+    <div class="row m-0 p-0">
+        <div class="col-md-7">
+            <h2 class="service-title">Find Talent</h2>
+            <div class="service-description">
+                Search from a pool of 56 million+ candidates in India. Our candidate search engine decodes your intent, giving you personalised results.
+            </div>
+            <div class="img-area d-md-none d-block">
+                <img src="https://media.foundit.in/django/static/images/service-resume-database.png" alt="Service Image">
+            </div>
+            <div class="service-pointer">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">
+                                <span class="tick-mark">✔️</span> Precision Search
+                            </h3>
+                            <div class="desc">Advanced search that finds profiles relevant to you</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">
+                                <span class="tick-mark">✔️</span> Powerful Filters
+                            </h3>
+                            <div class="desc">Customise your talent search to suit your needs</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">
+                                <span class="tick-mark">✔️</span> Easy Engagement
+                            </h3>
+                            <div class="desc">Connect with short-listed candidates instantly, via e-mail and SMS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <a href="#" class="btn btn-know-more">Know More</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#talk-to-sales" class="btn btn-talk-sales">Talk to Sales</a>
+            </div>
+        </div>
+        <div class="col-md-5 d-md-block d-none">
+            <div class="img-area">
+                <img src="~/Content/images/WhatsApp Image 2024-12-09 at 17.56.39.jpeg"  alt="Service Image">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="service-area service-job-posting">
+    <div class="row m-0 p-0">
+        <div class="col-md-6 d-md-block d-none">
+            <div class="img-area">
+                <img src="~/Content/images/WhatsApp Image 2024-12-09 at 17.56.40 (1).jpeg"  alt="Job Posting Image">
+          
+            </div>
+        </div>
+        <div class="col-md-6 two-column-left">
+            <h2 class="service-title">Job Posting</h2>
+            <div class="service-description">Put up job postings that grab eyeballs, so you get to your next hire faster.</div>
+            <div class="img-area d-block d-md-none">
+                <img src="https://media.foundit.in/django/static/images/service-job-posting.png" alt="Mobile Job Posting Image">
+            </div>
+            <div class="service-pointer">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="pointer-box">
+                            <h3 class="title">Quick Job Posting</h3>
+                            <div class="desc">Post job openings quickly and efficiently to find your next great hire right in your inbox</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pointer-box">
+                            <h3 class="title">Premium Job Posting</h3>
+                            <div class="desc">Highlight your brand and extend the availability of your open positions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <a href="#" class="btn btn-know-more">Know More</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#talk-to-sales" class="btn btn-talk-sales">Talk to Sales</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="service-area service-social-job">
+    <div class="row m-0 p-0">
+        <div class="col-md-7">
+            <h2 class="service-title">Social Job Ads</h2>
+            <div class="service-description">Recruiting made easy. Reach millions of active and passive candidates across social media platforms.</div>
+            <div class="img-area d-md-none d-block">
+                <img src="https://media.foundit.in/django/static/images/service-social-jobs.png" alt="Social Job Ads Image">
+            </div>
+            <div class="service-pointer">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">Targeted Ads</h3>
+                            <div class="desc">Run job ads on multiple social media platforms to precisely target candidates over Facebook, Instagram, Google, Twitter and foundit</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">Intelligent Targeting</h3>
+                            <div class="desc">Target your ideal candidate base based on job requirements without having to dive into the depths of social media targeting</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pointer-box">
+                            <h3 class="title">Quick &amp; Easy Set Up</h3>
+                            <div class="desc">Get started instantly, without worrying about significant financial investment or preparation time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <a href="#" class="btn btn-know-more">Know More</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#talk-to-sales" class="btn btn-talk-sales">Talk to Sales</a>
+            </div>
+        </div>
+        <div class="col-md-5 d-md-block d-none">
+            <div class="img-area">
+                <img src="~/Content/images/WhatsApp Image 2024-12-09 at 17.56.40.jpeg" alt="Social Job Ads Image">
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="speak-experts">
+    <div class="row m-0 p-0">
+        <div class="col-md-12 text-center">
+            <h2 class="heading">Speak to our Experts</h2>
+            <div class="sub-heading">Find the right hiring solutions for your needs</div>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#talk-to-sales" class="request-demo btn btn-primary">Request a Demo</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="growing-community">
+    <h2 class="head">Join a growing community of recruiters who are hiring better</h2>
+    <div class="community-container" id="community-container">
+        <!-- Example 1 -->
+        <div class="community-card">
+            <div class="c-info">
+                <div class="c-logo">
+                    <img src="https://media.foundit.in/django/static/media/recruiter_company_logo/capgemini_8XPDvXh.jpg" alt="Capgemini Logo">
+                </div>
+                <div class="c-name">
+                    <strong>Indumathi K</strong>
+                    <span>Senior HR Talent Acquisition</span>
+                    <p>Capgemini Technology Services India Limited</p>
+                </div>
+            </div>
+            <div class="c-msg">
+                Firstly, thank you for being a part of Capgemini group. It has been a great experience working with FoundIt.
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="community-card">
+            <div class="c-info">
+                <div class="c-logo">
+                    <img src="https://media.foundit.in/django/static/media/recruiter_company_logo/HCL_MiSsxuX.jpg" alt="HCL Logo">
+                </div>
+                <div class="c-name">
+                    <strong>Allysa “Ally” Dedase</strong>
+                    <span>Sr. Executive</span>
+                    <p>HCL</p>
+                </div>
+            </div>
+            <div class="c-msg">
+                Will definitely recommend FoundIt since it’s very easy to use and you can gather good results.
+            </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="community-card">
+            <div class="c-info">
+                <div class="c-logo">
+                    <img src="https://media.foundit.in/django/static/media/recruiter_company_logo/shell_eElBBM9.jpg" alt="Shell Logo">
+                </div>
+                <div class="c-name">
+                    <strong>Anil Reddy K</strong>
+                    <span>Talent Acquisition</span>
+                    <p>Shell Infotech</p>
+                </div>
+            </div>
+            <div class="c-msg">
+                It’s quite comfortable and easy to search for candidates with relevant experience and skillset.
+            </div>
+        </div>
+
+        <!-- Example 4 -->
+        <div class="community-card">
+            <div class="c-info">
+                <div class="c-logo">
+                    <img src="https://via.placeholder.com/100" alt="Company Logo">
+                </div>
+                <div class="c-name">
+                    <strong>John Doe</strong>
+                    <span>HR Manager</span>
+                    <p>XYZ Corp</p>
+                </div>
+            </div>
+            <div class="c-msg">
+                FoundIt has been a game-changer for us, helping us hire the right talent with minimal effort.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="owl-nav">
+        <button type="button" role="presentation" class="owl-prev" id="prev-button">
+            <span aria-label="Previous">‹</span>
+        </button>
+        <button type="button" role="presentation" class="owl-next" id="next-button">
+            <span aria-label="Next">›</span>
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .services-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+        background: linear-gradient(135deg, #6a1b9a, #f57c00);
+        color: white;
+        flex-wrap: wrap; /* Ensures the items wrap properly on small screens */
+    }
+
+    .services-content {
+        max-width: 50%;
+        padding: 20px;
+        text-align: left;
+    }
+
+        .services-content h1 {
+            /* font-size: 2.5rem;*/
+            margin: 20px 0;
+            font-size: 60px; /* Larger text */
+            font-weight: 800; /* Bold text */
+            color: #ffffff; /* White text for contrast */
+            text-align: left;
+            /*margin-bottom: 10px;*/
+            letter-spacing: 1.5px; /*Slight spacing for elegance */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .services-content p {
+            font-size: 1.2rem;
+            color: #ffeb3b;
+        }
+
+    .services-form {
+        background: #afd27da2;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+        .services-form h3 {
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            color: red;
+        }
+
+    .btn-submit {
+        background-color: #6a1b9a;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+        .btn-submit:hover {
+            background-color: #4a0072;
+        }
+
+    /* Carousel Section */
+    .extra-text {
+        background: #E119A0;
+        color: #fff;
+        position: relative;
+        width: 100%;
+        margin-top: -22px;
+        z-index: 0;
+        padding: 17px 35px;
+        font-size: 20px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+        .extra-text .carousel-inner a {
+            text-decoration: none;
+            color: #f6f7f9;
+            font-weight: bold;
+        }
+
+    /* Responsive Design */
+    @@media screen and (max-width: 768px) {
+        .services-container {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px; /* Adjust padding for mobile */
+        }
+
+        .services-content {
+            max-width: 100%;
+            margin-bottom: 20px;
+            padding: 10px; /* Reduce padding for mobile */
+        }
+
+        .services-form {
+            max-width: 100%;
+            padding: 20px; /* Ensure form is fully visible */
+        }
+
+        .services-content h1 {
+            font-size: 2rem;
+        }
+
+        .services-form h3 {
+            font-size: 1.5rem;
+        }
+        /* Additional Adjustments for smaller devices */
+        .form-group input {
+            padding: 12px; /* Increase input padding for better touch targets */
+        }
+
+        .btn-submit {
+            font-size: 1.2rem; /* Make button text larger */
+        }
+    }
+
+
+
+    .services-heading {
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: #474D6A;
+        text-align: center;
+        line-height: 1.2;
+        margin: 0;
+        padding: 28px 0 18px 0;
+    }
+
+
+    /* Responsive Styles */
+    @@media screen and (max-width: 768px) {
+        .services-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .services-content {
+            max-width: 100%;
+        }
+
+        .services-form {
+            max-width: 100%;
+        }
+    }
+
+    .service-area {
+        padding: 40px 20px;
+        background-color: #fff;
+    }
+
+    .service-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .service-description {
+        font-size: 1rem;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    .img-area img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pointer-box {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .pointer-box h3.title {
+            font-size: 1.2rem;
+            color: #343a40;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pointer-box .desc {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+    .tick-mark {
+        color: #ffbf00; /* Gold color for tick mark */
+        font-size: 1.2rem;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .action {
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .btn-know-more {
+        background-color: #007bff;
+        color: white;
+        margin-right: 10px;
+    }
+
+        .btn-know-more:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-talk-sales {
+        background-color: #28a745;
+        color: white;
+    }
+
+        .btn-talk-sales:hover {
+            background-color: #218838;
+        }
+
+    /* Responsive Styles */
+    @@media (max-width: 768px) {
+        .service-area .row {
+            flex-direction: column-reverse;
+        }
+
+        .col-md-7, .col-md-5 {
+            flex: 1;
+            padding: 10px;
+            max-width: 100%;
+        }
+
+        .img-area.d-md-none {
+            display: block;
+        }
+
+        .img-area.d-md-block {
+            display: none;
+        }
+    }
+
+
+    .service-area {
+        background-color: #fff;
+        padding: 40px 20px;
+    }
+
+    .service-job-posting .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .img-area img {
+        width: 100%;
+        height: auto;
+    }
+
+    .service-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 16px;
+    }
+
+    .service-description {
+        font-size: 16px;
+        color: #6c757d;
+        margin-bottom: 24px;
+    }
+
+    .service-pointer .pointer-box {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .service-pointer .title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .service-pointer .desc {
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .action {
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .btn-know-more {
+        background-color: #0d6efd;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+        .btn-know-more:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-talk-sales {
+        background-color: #198754;
+        color: #fff;
+    }
+
+        .btn-talk-sales:hover {
+            background-color: #157347;
+        }
+
+    @@media (max-width: 767px) {
+        .service-job-posting .row {
+            flex-direction: column;
+        }
+    }
+
+
+    .service-area {
+        background-color: #fff;
+        padding: 40px 20px;
+    }
+
+    .service-social-job .row {
+        margin: 0;
+        padding: 0;
+    }
+
+    .img-area img {
+        width: 100%;
+        height: auto;
+    }
+
+    .service-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 16px;
+    }
+
+    .service-description {
+        font-size: 16px;
+        color: #6c757d;
+        margin-bottom: 24px;
+    }
+
+    .service-pointer .pointer-box {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .service-pointer .title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .service-pointer .desc {
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .action {
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .btn-know-more {
+        background-color: #0d6efd;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+        .btn-know-more:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-talk-sales {
+        background-color: #198754;
+        color: #fff;
+    }
+
+        .btn-talk-sales:hover {
+            background-color: #157347;
+        }
+
+    @@media (max-width: 767px) {
+        .service-social-job .row {
+            flex-direction: column;
+        }
+    }
+
+    .speak-experts {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 17px;
+        color: #000;
+        background-color: #f8f9fa; /* Light gray background */
+        text-align: center;
+        padding: 40px 20px;
+        border-radius: 10px; /* Rounded corners */
+        box-sizing: border-box;
+    }
+
+        .speak-experts .heading {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd; /* Blue color for heading */
+            margin-bottom: 10px;
+        }
+
+        .speak-experts .sub-heading {
+            font-size: 1.25rem;
+            color: #495057; /* Dark gray for subheading */
+            margin-bottom: 20px;
+        }
+
+        .speak-experts .request-demo {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #0d6efd; /* Blue background for button */
+            border: none;
+            border-radius: 25px; /* Pill-shaped button */
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            .speak-experts .request-demo:hover {
+                background-color: #0a58ca; /* Darker blue on hover */
+                color: #fff;
+            }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    .growing-community {
+        text-align: center;
+        padding: 70px 50px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        border-radius: 10px;
+        max-width: 1500px;
+    }
+
+        .growing-community .head {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 30px;
+        }
+
+    .community-container {
+        display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .community-card {
+        min-width: 300px;
+        max-width: 400px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 55px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+    }
+
+        .community-card .c-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+    .c-logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .c-name {
+        font-size: 0.9rem;
+        color: #495057;
+    }
+
+        .c-name strong {
+            display: block;
+            font-size: 1rem;
+            color: #212529;
+        }
+
+        .c-name span {
+            color: #6c757d;
+        }
+
+    .c-msg {
+        font-size: 0.9rem;
+        color: #343a40;
+        line-height: 1.4;
+    }
+
+    /* Styles for navigation buttons */
+    .owl-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+        .owl-nav button {
+            background-color: #0d6efd;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .owl-nav button:hover {
+                background-color: #0056b3;
+            }
+
+            .owl-nav button:disabled {
+                background-color: #ddd;
+                cursor: not-allowed;
+            }
+
+        .owl-nav span {
+            display: block;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+</style>
+
+<script>
+    const container = document.getElementById('community-container');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+
+    // Scroll left when "Previous" is clicked
+    prevButton.addEventListener('click', () => {
+        container.scrollBy({
+            left: -300, // Adjust the scroll distance
+            behavior: 'smooth'
+        });
+    });
+
+    // Scroll right when "Next" is clicked
+    nextButton.addEventListener('click', () => {
+        container.scrollBy({
+            left: 300, // Adjust the scroll distance
+            behavior: 'smooth'
+        });
+    });
+</script>
+

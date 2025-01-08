@@ -1,0 +1,113 @@
+﻿@model IEnumerable<AptEMS.Models.PricingPackage>
+
+@{
+    ViewBag.Title = "Pricing Packages";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<link href="~/Content/shifts.css" rel="stylesheet" />
+<h2>Pricing Packages</h2>
+
+
+
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-4">
+
+        <p style="text-align:right">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary my-custom-button" })
+        </p>
+
+        <div class="table-responsive">
+            <table id="datatable" class="table table-striped table-bordered">
+
+                <thead>
+
+                    <tr>
+                        <th>Package Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Best For</th>
+                        <th>Billing Cycle</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var package in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@package.PackageName</td>
+                            <td>@package.Price</td>
+                            <td>@package.Description</td>
+                            <td>@package.BestFor</td>
+                            <td>@package.BillingCycle</td>
+                            <td>@package.IsActive </td>
+                            <td>
+                            
+
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */  id = package.PackageId }, new { @class = "btn btn-edit" })  |
+
+                                @using (Html.BeginForm("Delete", "PricingPackage", new { id = package.PackageId }, FormMethod.Post))
+                                {
+
+
+
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this package?');">Delete</button>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#datatable").DataTable({
+            // Custom options for DataTable
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthMenu: [5, 10, 25, 50, 100],
+            pageLength: 10,
+            language: {
+                search: "Custom Search:",  // Customize search label
+                lengthMenu: "Display _MENU_ records per page",
+                info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                infoEmpty: "No entries to show",
+                zeroRecords: "No matching records found"
+            }
+        });
+
+    });
+
+
+</script>
+
+
+
+

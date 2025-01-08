@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/admin_layout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.mobiscroll.com/5.0.0/css/mobiscroll.min.css" />
+    <script src="https://cdn.mobiscroll.com/5.0.0/js/mobiscroll.min.js"></script>
+
+
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header-title">Admin Panel</h1>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-danger sign-out-btn" title="Sign Out">Sign Out</a>
+    </header>
+
+
+
+    <div class="layout-wrapper">
+        <!-- Sidebar Section -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="/Home/Dashboard">Dashboard</a></li>
+
+
+
+                <li>
+                    <a href="#masterSubmenu2" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Masters <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu2" class="collapse list-unstyled" style="background-color: #0f4475;">
+
+                        <li>
+                            <a href="#masterSubmenu21" data-toggle="collapse" aria-expanded="false" class="d-block">
+                                Home Page <span class="dropdown-icon">></span>
+                            </a>
+                            <ul id="masterSubmenu21" class="collapse list-unstyled" style="background-color: #63a9a873;border-radius:5px; margin-left: 5px;">
+                                <li><a href="/Image/Index">Add Home page image</a></li>
+
+                                
+                                <li><a href="/Skills">Skills</a></li>
+                                <li><a href="/Locations">Locations</a></li>
+                                <li><a href="/Strengths">Strength</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/Shift">Add Shift</a></li>
+                        <li><a href="/shiftreg">Add Shift Timings</a></li>
+                        <li><a href="/AttendanceConfigure">Attendances Configuration</a></li>
+                        <li><a href="/Designations">Add Designations</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#masterSubmenu3" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Admin <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu3" class="collapse list-unstyled" style="background-color: #0f4475;">
+                        <li><a href="/Reviews/managereviews">Add Reviews</a></li>
+                        <li><a href="/Reviews/ManagePartnerships">Add Partners</a></li>
+                        <li><a href="/SalaryTranscation">Add Salary Elements</a></li>
+                        <li><a href="/Statistic">Add Statistics</a></li>
+                        <li><a href="/PricingPackage/Index">Add Plans</a></li>
+                        <li><a href="/Holiday">Holiday List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#masterSubmenu4" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Configuration Of The Company <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu4" class="collapse list-unstyled" style="background-color: #0f4475;">
+                        <li><a href="#">Company Details</a></li>
+                        <li><a href="/ClientAgreement">Client Agreements</a></li>
+                        <li>
+                            <a href="#masterSubmenu41" data-toggle="collapse" aria-expanded="false" class="d-block">
+                                Salary Configuration  <span class="dropdown-icon">></span>
+                            </a>
+                            <ul id="masterSubmenu41" class="collapse list-unstyled" style="background-color: #63a9a873;border-radius:5px; margin-left: 5px;">
+                                <li><a href="/Deductions">Deductions</a></li>
+                                <li><a href="/AdvancePaymnet">Advance Payment</a></li>
+                                <li><a href="/Allowances">Allowances</a></li>
+                                <li><a href="/SalaryComparison">Salary Comparison</a></li>
+                                <li><a href="/Roles">Roles</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#masterSubmenu42" data-toggle="collapse" aria-expanded="false" class="d-block">
+                                Client Side <span class="dropdown-icon">></span>
+                            </a>
+                            <ul id="masterSubmenu42" class="collapse list-unstyled" style="background-color: #63a9a873; border-radius: 5px; margin-left: 5px;">
+                                <li><a href="/Client/EnrollmentList">Client Details</a></li>
+                                <li><a href="/Client/AssignedClients">Assigned BDE</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/Home/AdminContactForm">Contact Details</a></li>
+                        <li><a href="/Account/Userdetails">Users Details</a></li>
+                        <li><a href="/AttendanceConfigure">Attendance Configure</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#masterSubmenu5" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Add New Job <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu5" class="collapse list-unstyled" style="background-color: #0f4475;">
+                        @*                        <li><a href="/admin/careers">Add JD</a></li>
+                        *@
+                        <li><a href="/JobPost">Add Client JD</a></li>
+                        <li><a href="/Job/ApplicationList">Applicants details </a></li>
+                        <li>
+                            <a href="#masterSubmenu51" data-toggle="collapse" aria-expanded="false" class="d-block">
+                                Candidate <span class="dropdown-icon">></span>
+                            </a>
+                            <ul id="masterSubmenu51" class="collapse list-unstyled" style="background-color: #63a9a873; border-radius: 5px; margin-left: 5px;">
+                               
+
+                                <li><a href="/Qualification">Education</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#masterSubmenu6" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Interview Process <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu6" class="collapse list-unstyled" style="background-color: #0f4475;">
+                        <li><a href="/FirstRound">First Round</a></li>
+                        <li><a href="/SecondRound">Second Round</a></li>
+                        <li><a href="/ThirdRound">Third Round</a></li>
+                        <li><a href="/SelectedCandidates">Selected Candidates</a></li>
+                        <li><a href="/Rejected">Rejected Candidates</a></li>
+                        <li><a href="/OfferLetterReleased/Index">Offer Letter Released Candidates</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#masterSubmenu7" data-toggle="collapse" aria-expanded="false" class="d-block">
+                        Employee Details <span class="dropdown-icon">></span>
+                    </a>
+                    <ul id="masterSubmenu7" class="collapse list-unstyled" style="background-color: #0f4475;">
+                        <li><a href="/Employee">Employee List</a></li>
+                        <li><a href="/shiftreg">Shift Reg</a></li>
+                        <li><a href="/LOP">LOP</a></li>
+                        <li><a href="/Incentives">Incentives</a></li>
+                        <li><a href="/Hike">Hike Details</a></li>
+                        <li><a href="/Loan">Loan Details</a></li>
+                        <li><a href="/DailyAttendance">Daily Attendances</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+        </main>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; 2024 Admin Panel. All rights reserved.</p>
+    </footer>
+
+
+
+
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#datatable").DataTable(
+            );
+
+
+        });
+
+
+    </script>
+    <style>
+        /* Styling the search bar */
+        .dataTables_filter input[type="search"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px 10px;
+            width: 250px;
+            margin: 0 10px;
+        }
+
+        /* Styling the DataTable */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 5px 10px;
+                margin-left: 2px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                color: #333;
+                background-color: #f8f9fa;
+                cursor: pointer;
+            }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                    background-color: #e9ecef;
+                    border-color: #ccc;
+                }
+    </style>
+
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#datatable").DataTable(
+            );
+
+
+        });
+
+
+    </script>
+
+    @*//* side dropsown*//*@
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdownLinks = document.querySelectorAll('a[data-toggle="collapse"]');
+
+            dropdownLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    const icon = link.querySelector(".dropdown-icon");
+                    const isExpanded = link.getAttribute("aria-expanded") === "true";
+                    icon.textContent = isExpanded ? ">" : "v"; // Adjust icon text (or use classes for icons)
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Styling the search bar */
+        .dataTables_filter input[type="search"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px 10px;
+            width: 250px;
+            margin: 0 10px;
+        }
+
+        /* Styling the DataTable */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 5px 10px;
+                margin-left: 2px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                color: #333;
+                background-color: #f8f9fa;
+                cursor: pointer;
+            }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                    background-color: #e9ecef;
+                    border-color: #ccc;
+                }
+
+        .dropdown-icon {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .collapse.show + a .dropdown-icon {
+            transform: rotate(90deg); /* Rotate the icon */
+        }
+
+        a[data-toggle="collapse"] .dropdown-icon {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #fff; /* Adjust the color as needed */
+        }
+    </style>
+
+
+
+</body>
+</html>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+
+
+<!-- Add this in the <head> section -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- Add this at the end of the <body> section -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>

@@ -1,0 +1,313 @@
+﻿@model AptEMS.Models.JobPost
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h2 class="page-title">Job Post Details</h2>
+
+<div class="details-container">
+    <h4 class="section-title">Job Post Information</h4>
+    <hr />
+
+    <dl class="details-list">
+        <div class="detail-item">
+            <dt>
+                Job Type:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobType)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Employment Type :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmploymentType)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Scheduled Date :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduledDate)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Expiry Date :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ExpiryDate)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Job Title :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobTitle)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Minimum Experience :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MinExperience)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Maximum Experience :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaxExperience)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Skills :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Skills)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Job Description :
+            </dt>
+            <dd class="job-description">
+                @Html.Raw(Model.JobDescription)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Job Location :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobLocation)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Min Salary :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MinSalary)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Max Salary :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaxSalary)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Industry :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Industry)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Functions And Roles :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FunctionsAndRoles)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Education :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Education)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Is Active :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter Name :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterName)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter Designation :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterDesignation)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter Phone Number :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterPhoneNumber)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter Email :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterEmail)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter Company Name :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterCompanyName)
+            </dd>
+        </div>
+
+        <div class="detail-item">
+            <dt>
+                Recruiter About Company :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecruiterAboutCompany)
+            </dd>
+        </div>
+    </dl>
+
+    <div class="action-buttons">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.JobPostID }, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-sm" })
+    </div>
+</div>
+
+<style>
+    .page-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .details-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        font-family: 'Arial', sans-serif;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #444;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 5px;
+    }
+
+    .details-list {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .detail-item {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+        .detail-item dt {
+            font-weight: bold;
+            width: 350px;
+            color: #333;
+            padding-right: 05px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        .detail-item dd {
+            flex: 1;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+    .job-description {
+        white-space: pre-line;
+        color: #333;
+    }
+
+    .action-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-size: 14px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>

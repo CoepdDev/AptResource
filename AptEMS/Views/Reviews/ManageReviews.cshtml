@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AptEMS.Models.ClientReview>
+
+@{
+    ViewBag.Title = "ManageReviews";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+    int serialno = 1;
+}
+
+<h2>ManageReviews</h2>
+
+<p>
+    <a href="@Url.Action( "AddReview","Reviews")" class="btn btn-primary">Create Review</a>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            S.NO
+        </th>
+        <th>
+            Reviews
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @serialno
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditReview", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+            
+            @using (Html.BeginForm("DeleteReview", "Reviews", new { id = item.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Are you sure you want to delete this Review?');">
+                    Delete
+                </button>
+            }
+        </td>
+    </tr>
+    serialno++;
+}
+
+</table>
