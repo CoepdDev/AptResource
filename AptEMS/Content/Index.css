@@ -173,6 +173,164 @@ h2.why-choose {
     margin-top: 60px;
 }
 
+/* Partnership Section */
+.partnerships-carousel {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+}
+
+.partnerships-carousel h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #0d6efd;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Marquee track */
+.partnerships-carousel-track {
+    display: flex;
+    gap: 20px; /* Consistent gap between items */
+    animation: marquee-partnerships 10s linear infinite; /* Same speed as client reviews */
+}
+
+/* Marquee animation */
+@keyframes marquee-partnerships {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Pause marquee on hover */
+.partnerships-carousel:hover .partnerships-carousel-track {
+    animation-play-state: paused;
+}
+
+.partnership-item {
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px; /* Ensures consistent box size */
+}
+
+    .partnership-item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+/* Client Reviews Section */
+.container2 {
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden; /* Ensures content outside the container is hidden */
+}
+
+    .container2 h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        text-align: center;
+        color: #0d6efd;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+/* Marquee container */
+.stories-wrapper {
+    position: relative;
+    overflow: hidden; /* Hides overflow for marquee effect */
+    height: 300px; /* Adjust height as per the card size */
+}
+
+.stories {
+    display: flex;
+    gap: 30px; /* Consistent gap between review cards */
+    animation: marquee 10s linear infinite;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.stories:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+.story-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    min-width: 250px; /* Maintain minimum width */
+    text-align: center;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+    .story-card:hover {
+        transform: scale(1.05);
+    }
+
+    .story-card p {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+.author {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/*statatics*/
+.statistic-item {
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+    .statistic-item img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.stat-description {
+    font-size: 16px;
+    color: #666;
+}
+
+
+
 
 
     /* Reviews scrolling animation */
